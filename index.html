@@ -136,6 +136,7 @@ let livello = parseInt(localStorage.getItem("livello")) || 0;
 
 let risposta = document.getElementById("codice").value.toLowerCase();
 
+
 let frammenti = {
 
     "nascita": {
@@ -170,10 +171,11 @@ let frammenti = {
 
     "anima": {
         numero: 7,
-        messaggio: "🎂 Settimo frammento recuperato."
+        messaggio: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
     }
 
 };
+
 
 
 if(frammenti[risposta]){
@@ -181,8 +183,7 @@ if(frammenti[risposta]){
 
     if(frammenti[risposta].numero !== livello + 1){
 
-        document.getElementById("messaggio").innerHTML =
-        "Il grimorio non accetta questa parola.";
+        errore();
 
         return;
     }
@@ -209,9 +210,11 @@ if(frammenti[risposta]){
     frammenti[risposta].messaggio;
 
 
+
     if(n === 7){
 
         document.querySelector(".grimorio").style.display="none";
+
         document.getElementById("finale").style.display="block";
 
     }
@@ -221,13 +224,36 @@ if(frammenti[risposta]){
 
 else {
 
+    errore();
 
-document.getElementById("messaggio").innerHTML =
-"Il grimorio non accetta questa parola.";
+}
 
 
 }
 
+
+
+function errore(){
+
+let risposte = [
+
+"Il grimorio non accetta questa parola.",
+
+"Le rune restano immobili. Il codice non è corretto."
+
+];
+
+
+let casuale = Math.floor(Math.random()*risposte.length);
+
+
+document.getElementById("messaggio").innerHTML =
+risposte[casuale];
+
+
+document.getElementById("codice").value="";
+
+}
 }
 
 </script>
