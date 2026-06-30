@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Registro dei Frammenti</title>
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    background:
+    radial-gradient(circle, #3b2a16, #0d0805);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    color: #e8d8a8;
+}
+
+.grimorio {
+    width: 90%;
+    max-width: 500px;
+    background: rgba(30,18,8,0.9);
+    border: 3px solid #b99652;
+    border-radius: 12px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 0 40px #000;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+.frammenti {
+    font-size: 20px;
+    margin: 20px;
+}
+
+.barra {
+    height: 20px;
+    background: #24170b;
+    border: 1px solid #b99652;
+    margin: 20px 0;
+}
+
+.progresso {
+    height:100%;
+    width:0%;
+    background:#b99652;
+}
+
+input {
+    background:#140d06;
+    border:1px solid #b99652;
+    padding:12px;
+    color:#e8d8a8;
+    width:80%;
+    text-align:center;
+}
+
+button {
+    margin-top:15px;
+    padding:12px 25px;
+    background:#b99652;
+    border:none;
+    cursor:pointer;
+    font-family:Georgia;
+}
+
+#messaggio {
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="grimorio">
+
+<h1>📜 Registro dei Frammenti</h1>
+
+
+<p>
+Ho tentato di fermare il tempo.
+<br>
+Per evitare il compimento dei 30 anni,
+ho diviso la mia essenza in sette frammenti.
+</p>
+
+
+<div class="frammenti">
+Frammenti recuperati: <b>0 / 7</b>
+</div>
+
+
+<div class="barra">
+<div class="progresso"></div>
+</div>
+
+
+<p>
+Inserisci il codice del primo frammento:
+</p>
+
+
+<input id="codice" placeholder="Scrivi il codice">
+
+
+<br>
+
+<button onclick="sblocca()">
+Sblocca
+</button>
+
+
+<div id="messaggio"></div>
+
+
+</div>
+
+
+
+<script>
+
+function sblocca(){
+
+let risposta =
+document.getElementById("codice").value;
+
+
+if(risposta.toLowerCase()=="nascita"){
+
+document.querySelector(".progresso").style.width="14%";
+
+document.getElementById("messaggio").innerHTML =
+"✨ Primo frammento recuperato.<br><br>Ne restano sei...";
+
+}
+
+else {
+
+document.getElementById("messaggio").innerHTML =
+"Il grimorio rifiuta questa parola.";
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>
