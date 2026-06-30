@@ -185,7 +185,19 @@ if(input === frammenti[livello].parola){
 
 
 livello++;
+if(livello < 7){
 
+document.getElementById("istruzione").innerHTML =
+"Il grimorio attende il codice del frammento " + (livello + 1) + ":";
+
+}
+
+else {
+
+document.getElementById("istruzione").innerHTML =
+"";
+
+}
 
 document.querySelector(".progresso").style.width =
 (livello * 14.28) + "%";
