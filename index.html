@@ -131,100 +131,100 @@ Sblocca
 <script>
 
 function sblocca(){
-let livello = parseInt(localStorage.getItem("livello")) || 0;
-let risposta =
-document.getElementById("codice").value;
 
+let livello = parseInt(localStorage.getItem("livello")) || 0;
+
+let risposta = document.getElementById("codice").value.toLowerCase();
 
 let frammenti = {
+
     "nascita": {
         numero: 1,
-        messaggio: "✨ Primo frammento recuperato.<br><br>Il frammento della nascita è tornato alla sua origine.<br>Ne restano sei..."
+        messaggio: "✨ Primo frammento recuperato.<br><br>Il primo sigillo si è spezzato."
     },
 
     "tempo": {
         numero: 2,
-        messaggio: "⏳ Secondo frammento recuperato.<br><br>Il tempo ha iniziato a scorrere di nuovo."
+        messaggio: "⏳ Secondo frammento recuperato.<br><br>Il tempo torna a scorrere."
     },
 
     "ricordo": {
         numero: 3,
-        messaggio: "📜 Terzo frammento recuperato.<br><br>Un ricordo perduto è riaffiorato."
+        messaggio: "📜 Terzo frammento recuperato.<br><br>Un ricordo è riaffiorato."
     },
 
     "ombra": {
         numero: 4,
-        messaggio: "🌑 Quarto frammento recuperato.<br><br>L'ombra non nasconde più nulla."
+        messaggio: "🌑 Quarto frammento recuperato."
     },
 
     "coraggio": {
         numero: 5,
-        messaggio: "🔥 Quinto frammento recuperato.<br><br>Il coraggio è stato ritrovato."
+        messaggio: "🔥 Quinto frammento recuperato."
     },
 
     "sogno": {
         numero: 6,
-        messaggio: "✨ Sesto frammento recuperato.<br><br>Il futuro è nuovamente possibile."
+        messaggio: "✨ Sesto frammento recuperato."
     },
 
     "anima": {
         numero: 7,
-        messaggio: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
+        messaggio: "🎂 Settimo frammento recuperato."
     }
+
 };
 
 
-
-let codice = risposta.toLowerCase();
-
-let livello = n;
+if(frammenti[risposta]){
 
 
-if(frammenti[codice]){
+    if(frammenti[risposta].numero !== livello + 1){
+
+        document.getElementById("messaggio").innerHTML =
+        "Il grimorio non accetta questa parola.";
+
+        return;
+    }
 
 
-if(frammenti[codice].numero !== livello + 1){
-
-document.getElementById("messaggio").innerHTML =
-"Il grimorio rifiuta questa parola.";
-
-return;
-
-}
+    let n = frammenti[risposta].numero;
 
 
-let n = frammenti[codice].numero;
-localStorage.setItem("livello", n);
-document.getElementById("codice").value = "";
+    localStorage.setItem("livello", n);
 
 
-document.getElementById("istruzione").innerHTML =
-"Il grimorio attende il codice del frammento " + (n+1) + ".";
-
-document.querySelector(".progresso").style.width =
-(n*14.28)+"%";
+    document.querySelector(".progresso").style.width =
+    (n * 14.28) + "%";
 
 
-document.querySelector(".frammenti").innerHTML =
-"Frammenti recuperati: <b>"+n+" / 7</b>";
+    document.querySelector(".frammenti").innerHTML =
+    "Frammenti recuperati: <b>" + n + " / 7</b>";
 
 
-document.getElementById("messaggio").innerHTML =
-frammenti[codice].messaggio;
-if(n === 7){
+    document.getElementById("codice").value = "";
 
-document.querySelector(".grimorio").style.display="none";
 
-document.getElementById("finale").style.display="block";
+    document.getElementById("messaggio").innerHTML =
+    frammenti[risposta].messaggio;
 
-}
+
+    if(n === 7){
+
+        document.querySelector(".grimorio").style.display="none";
+        document.getElementById("finale").style.display="block";
+
+    }
+
 
 }
 
 else {
 
+
 document.getElementById("messaggio").innerHTML =
-"Il grimorio rifiuta questa parola.";
+"Il grimorio non accetta questa parola.";
+
 
 }
 
