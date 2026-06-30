@@ -106,7 +106,7 @@ Frammenti recuperati: <b>0 / 7</b>
 </div>
 
 
-<p>
+<p id="istruzione">
 Inserisci il codice del primo frammento:
 </p>
 
@@ -183,6 +183,11 @@ if(frammenti[codice]){
 
 let n = frammenti[codice].numero;
 
+document.getElementById("codice").value = "";
+
+
+document.getElementById("istruzione").innerHTML =
+"Il grimorio attende il codice del frammento " + (n+1) + ".";
 
 document.querySelector(".progresso").style.width =
 (n*14.28)+"%";
