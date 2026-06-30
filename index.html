@@ -212,7 +212,19 @@ document.getElementById("codice").value="";
 
 document.getElementById("messaggio").innerHTML =
 frammenti[livello-1].testo;
+if(livello < 7){
 
+document.getElementById("istruzione").innerHTML =
+"Il grimorio attende il codice del frammento " + (livello + 1) + ":";
+
+}
+
+else {
+
+document.getElementById("istruzione").innerHTML =
+"";
+
+}
 
 
 if(livello === 7){
