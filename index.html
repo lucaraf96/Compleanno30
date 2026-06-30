@@ -130,130 +130,113 @@ Sblocca
 
 <script>
 
-function sblocca(){
-
-let livello = parseInt(localStorage.getItem("livello")) || 0;
-
-let risposta = document.getElementById("codice").value.toLowerCase();
+let livello = 0;
 
 
-let frammenti = {
+const frammenti = [
 
-    "nascita": {
-        numero: 1,
-        messaggio: "✨ Primo frammento recuperato.<br><br>Il primo sigillo si è spezzato."
-    },
+{
+parola: "nascita",
+testo: "✨ Primo frammento recuperato.<br><br>Il primo sigillo è spezzato."
+},
 
-    "tempo": {
-        numero: 2,
-        messaggio: "⏳ Secondo frammento recuperato.<br><br>Il tempo torna a scorrere."
-    },
+{
+parola: "tempo",
+testo: "⏳ Secondo frammento recuperato.<br><br>Il tempo ricomincia a scorrere."
+},
 
-    "ricordo": {
-        numero: 3,
-        messaggio: "📜 Terzo frammento recuperato.<br><br>Un ricordo è riaffiorato."
-    },
+{
+parola: "ricordo",
+testo: "📜 Terzo frammento recuperato.<br><br>Un ricordo perduto ritorna."
+},
 
-    "ombra": {
-        numero: 4,
-        messaggio: "🌑 Quarto frammento recuperato."
-    },
+{
+parola: "ombra",
+testo: "🌑 Quarto frammento recuperato."
+},
 
-    "coraggio": {
-        numero: 5,
-        messaggio: "🔥 Quinto frammento recuperato."
-    },
+{
+parola: "coraggio",
+testo: "🔥 Quinto frammento recuperato."
+},
 
-    "sogno": {
-        numero: 6,
-        messaggio: "✨ Sesto frammento recuperato."
-    },
+{
+parola: "sogno",
+testo: "✨ Sesto frammento recuperato."
+},
 
-    "anima": {
-        numero: 7,
-        messaggio: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
-    }
-
-};
-
-
-
-if(frammenti[risposta]){
-
-
-    if(frammenti[risposta].numero !== livello + 1){
-
-        errore();
-
-        return;
-    }
-
-
-    let n = frammenti[risposta].numero;
-
-
-    localStorage.setItem("livello", n);
-
-
-    document.querySelector(".progresso").style.width =
-    (n * 14.28) + "%";
-
-
-    document.querySelector(".frammenti").innerHTML =
-    "Frammenti recuperati: <b>" + n + " / 7</b>";
-
-
-    document.getElementById("codice").value = "";
-
-
-    document.getElementById("messaggio").innerHTML =
-    frammenti[risposta].messaggio;
-
-
-
-    if(n === 7){
-
-        document.querySelector(".grimorio").style.display="none";
-
-        document.getElementById("finale").style.display="block";
-
-    }
-
-
+{
+parola: "anima",
+testo: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
 }
-
-else {
-
-    errore();
-
-}
-
-
-}
-
-
-
-function errore(){
-
-let risposte = [
-
-"Il grimorio non accetta questa parola.",
-
-"Le rune restano immobili. Il codice non è corretto."
 
 ];
 
 
-let casuale = Math.floor(Math.random()*risposte.length);
+
+function sblocca(){
 
 
-document.getElementById("messaggio").innerHTML =
-risposte[casuale];
+let input =
+document.getElementById("codice").value.toLowerCase();
+
+
+if(input === frammenti[livello].parola){
+
+
+livello++;
+
+
+document.querySelector(".progresso").style.width =
+(livello * 14.28) + "%";
+
+
+document.querySelector(".frammenti").innerHTML =
+"Frammenti recuperati: <b>" + livello + " / 7</b>";
 
 
 document.getElementById("codice").value="";
 
+
+document.getElementById("messaggio").innerHTML =
+frammenti[livello-1].testo;
+
+
+
+if(livello === 7){
+
+document.querySelector(".grimorio").style.display="none";
+
+document.getElementById("finale").style.display="block";
+
 }
+
+
+}
+
+
+else{
+
+
+let errori = [
+
+"Il grimorio non accetta questa parola.",
+
+"Le rune rimangono silenziose. Riprova."
+
+];
+
+
+document.getElementById("messaggio").innerHTML =
+errori[Math.floor(Math.random()*errori.length)];
+
+
+document.getElementById("codice").value="";
+
+
+}
+
+
 }
 
 </script>
