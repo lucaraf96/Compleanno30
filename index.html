@@ -131,7 +131,7 @@ Sblocca
 <script>
 
 function sblocca(){
-
+let livello = parseInt(localStorage.getItem("livello")) || 0;
 let risposta =
 document.getElementById("codice").value;
 
@@ -177,12 +177,24 @@ let frammenti = {
 
 let codice = risposta.toLowerCase();
 
+let livello = n;
+
 
 if(frammenti[codice]){
 
 
-let n = frammenti[codice].numero;
+if(frammenti[codice].numero !== livello + 1){
 
+document.getElementById("messaggio").innerHTML =
+"Il grimorio rifiuta questa parola.";
+
+return;
+
+}
+
+
+let n = frammenti[codice].numero;
+localStorage.setItem("livello", n);
 document.getElementById("codice").value = "";
 
 
@@ -199,7 +211,13 @@ document.querySelector(".frammenti").innerHTML =
 
 document.getElementById("messaggio").innerHTML =
 frammenti[codice].messaggio;
+if(n === 7){
 
+document.querySelector(".grimorio").style.display="none";
+
+document.getElementById("finale").style.display="block";
+
+}
 
 }
 
@@ -214,6 +232,20 @@ document.getElementById("messaggio").innerHTML =
 
 </script>
 
+<div id="finale" style="display:none;" class="grimorio">
 
+<h1>✨ ANIMA RIPRISTINATA ✨</h1>
+
+<p>
+Tutti i frammenti sono stati recuperati.
+<br><br>
+Il tempo può finalmente riprendere il suo corso.
+</p>
+
+<h2>
+🎂 30 ANNI SBLOCCATI 🎂
+</h2>
+
+</div>
 </body>
 </html>
