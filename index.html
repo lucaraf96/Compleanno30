@@ -136,12 +136,65 @@ let risposta =
 document.getElementById("codice").value;
 
 
-if(risposta.toLowerCase()=="nascita"){
+let frammenti = {
+    "nascita": {
+        numero: 1,
+        messaggio: "✨ Primo frammento recuperato.<br><br>Il frammento della nascita è tornato alla sua origine.<br>Ne restano sei..."
+    },
 
-document.querySelector(".progresso").style.width="14%";
+    "tempo": {
+        numero: 2,
+        messaggio: "⏳ Secondo frammento recuperato.<br><br>Il tempo ha iniziato a scorrere di nuovo."
+    },
+
+    "ricordo": {
+        numero: 3,
+        messaggio: "📜 Terzo frammento recuperato.<br><br>Un ricordo perduto è riaffiorato."
+    },
+
+    "ombra": {
+        numero: 4,
+        messaggio: "🌑 Quarto frammento recuperato.<br><br>L'ombra non nasconde più nulla."
+    },
+
+    "coraggio": {
+        numero: 5,
+        messaggio: "🔥 Quinto frammento recuperato.<br><br>Il coraggio è stato ritrovato."
+    },
+
+    "sogno": {
+        numero: 6,
+        messaggio: "✨ Sesto frammento recuperato.<br><br>Il futuro è nuovamente possibile."
+    },
+
+    "anima": {
+        numero: 7,
+        messaggio: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
+    }
+};
+
+
+
+let codice = risposta.toLowerCase();
+
+
+if(frammenti[codice]){
+
+
+let n = frammenti[codice].numero;
+
+
+document.querySelector(".progresso").style.width =
+(n*14.28)+"%";
+
+
+document.querySelector(".frammenti").innerHTML =
+"Frammenti recuperati: <b>"+n+" / 7</b>";
+
 
 document.getElementById("messaggio").innerHTML =
-"✨ Primo frammento recuperato.<br><br>Ne restano sei...";
+frammenti[codice].messaggio;
+
 
 }
 
