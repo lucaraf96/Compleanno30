@@ -9,72 +9,193 @@
 <style>
 
 body {
-    margin: 0;
-    height: 100vh;
+
     background:
-    radial-gradient(circle, #3b2a16, #0d0805);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    radial-gradient(circle at top, #3a2a2a, #080808);
+
+    color: #e8d8b0;
+
     font-family: Georgia, serif;
-    color: #e8d8a8;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
 }
+
+
 
 .grimorio {
-    width: 90%;
-    max-width: 500px;
-    background: rgba(30,18,8,0.9);
-    border: 3px solid #b99652;
-    border-radius: 12px;
-    padding: 35px;
-    text-align: center;
-    box-shadow: 0 0 40px #000;
+
+    width: 500px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    background:
+
+    linear-gradient(
+    rgba(20,15,15,0.95),
+    rgba(10,8,8,0.95)
+    );
+
+    border:2px solid #8c6a35;
+
+    border-radius:15px;
+
+    box-shadow:
+
+    0 0 30px rgba(0,0,0,0.9),
+
+    inset 0 0 30px rgba(140,106,53,0.2);
+
+    text-align:center;
+
 }
+
+
 
 h1 {
-    font-size: 32px;
+
+    font-size:38px;
+
+    color:#d4af37;
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,0.5);
+
 }
 
-.frammenti {
-    font-size: 20px;
-    margin: 20px;
+
+
+h3 {
+
+    font-weight:normal;
+
+    color:#bda77a;
+
 }
 
-.barra {
-    height: 20px;
-    background: #24170b;
-    border: 1px solid #b99652;
-    margin: 20px 0;
+
+
+.progresso-container {
+
+    background:#1a1414;
+
+    border:1px solid #6d5128;
+
+    border-radius:20px;
+
+    height:20px;
+
+    overflow:hidden;
+
+    margin:25px 0;
+
 }
+
+
 
 .progresso {
+
     height:100%;
+
     width:0%;
-    background:#b99652;
+
+    background:
+
+    linear-gradient(
+    90deg,
+    #5b0000,
+    #d4af37
+    );
+
+    transition:0.5s;
+
 }
+
+
 
 input {
-    background:#140d06;
-    border:1px solid #b99652;
+
+    background:#100c0c;
+
+    color:#e8d8b0;
+
+    border:
+
+    1px solid #8c6a35;
+
     padding:12px;
-    color:#e8d8a8;
+
     width:80%;
+
+    font-size:18px;
+
+    border-radius:8px;
+
     text-align:center;
+
 }
+
+
 
 button {
+
     margin-top:15px;
-    padding:12px 25px;
-    background:#b99652;
-    border:none;
+
+    padding:12px 30px;
+
+    background:#4b0000;
+
+    color:#e8d8b0;
+
+    border:1px solid #d4af37;
+
+    border-radius:8px;
+
+    font-size:18px;
+
     cursor:pointer;
-    font-family:Georgia;
+
 }
+
+
+
+button:hover {
+
+    background:#700000;
+
+}
+
+
 
 #messaggio {
-    margin-top:20px;
+
+    margin-top:25px;
+
+    min-height:60px;
+
+    font-size:20px;
+
+    font-style:italic;
+
+    color:#f0dfb0;
+
 }
 
+
+
+#finale {
+
+    text-align:center;
+
+}
 </style>
 
 </head>
