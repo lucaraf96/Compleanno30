@@ -15,21 +15,12 @@
     :root {
       --oro: #c89b3c;
       --oro-chiaro: #f4d98a;
-      --oro-scuro: #6f4d1c;
       --rosso: #801109;
-      --rosso-scuro: #310403;
-      --nero: #050403;
-      --pelle: #17110b;
       --testo: #d8c093;
-      --testo-soft: #9d8760;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      min-height: 100%;
     }
 
     body {
@@ -44,10 +35,9 @@
       overflow-x: hidden;
 
       background:
-        radial-gradient(circle at 90% 8%, rgba(255, 168, 58, 0.42), transparent 10%),
-        radial-gradient(circle at 96% 78%, rgba(255, 118, 28, 0.36), transparent 13%),
-        radial-gradient(circle at 8% 22%, rgba(231, 104, 31, 0.18), transparent 17%),
-        radial-gradient(circle at 50% 30%, rgba(139, 78, 27, 0.26), transparent 42%),
+        radial-gradient(circle at 90% 8%, rgba(255, 168, 58, 0.38), transparent 11%),
+        radial-gradient(circle at 96% 78%, rgba(255, 118, 28, 0.32), transparent 14%),
+        radial-gradient(circle at 50% 30%, rgba(139, 78, 27, 0.28), transparent 42%),
         linear-gradient(90deg, #010101 0%, #090604 20%, #17100b 50%, #070403 82%, #000 100%);
     }
 
@@ -57,34 +47,21 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-
       background:
-        radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.86) 100%),
+        radial-gradient(circle at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.78) 100%),
         repeating-linear-gradient(
           35deg,
-          rgba(255, 255, 255, 0.022) 0px,
-          rgba(255, 255, 255, 0.022) 1px,
+          rgba(255, 255, 255, 0.025) 0px,
+          rgba(255, 255, 255, 0.025) 1px,
           transparent 1px,
           transparent 7px
         );
-      mix-blend-mode: overlay;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.9), transparent 18%, transparent 82%, rgba(0,0,0,0.9)),
-        linear-gradient(0deg, rgba(0,0,0,0.75), transparent 23%, transparent 77%, rgba(0,0,0,0.72));
+      opacity: 0.75;
     }
 
     .pagina {
       position: relative;
-      z-index: 3;
+      z-index: 5;
       width: min(900px, 96vw);
     }
 
@@ -99,7 +76,6 @@
       background:
         radial-gradient(circle at 50% 20%, rgba(207, 143, 54, 0.17), transparent 30%),
         radial-gradient(circle at 92% 84%, rgba(160, 75, 18, 0.16), transparent 22%),
-        radial-gradient(circle at 7% 10%, rgba(255,255,255,0.08), transparent 6%),
         linear-gradient(180deg, rgba(36, 28, 18, 0.99), rgba(9, 7, 5, 0.99)),
         repeating-linear-gradient(
           45deg,
@@ -125,9 +101,7 @@
       inset: 25px;
       border: 1px solid rgba(200, 155, 60, 0.45);
       pointer-events: none;
-      box-shadow:
-        inset 0 0 22px rgba(200, 155, 60, 0.10),
-        0 0 18px rgba(0,0,0,0.5);
+      z-index: 1;
     }
 
     .grimorio::after {
@@ -138,3 +112,496 @@
       transform: translateX(-50%);
       color: rgba(200, 155, 60, 0.82);
       font-size: 28px;
+      text-shadow: 0 0 14px rgba(200,155,60,0.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .contenuto {
+      position: relative;
+      z-index: 3;
+    }
+
+    .angolo {
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      border-color: rgba(200,155,60,0.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .alto-sx {
+      top: 38px;
+      left: 38px;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .alto-dx {
+      top: 38px;
+      right: 38px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .basso-sx {
+      bottom: 38px;
+      left: 38px;
+      border-bottom: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .basso-dx {
+      bottom: 38px;
+      right: 38px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Cinzel", Georgia, serif;
+      font-size: clamp(50px, 8vw, 88px);
+      line-height: 0.92;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--oro-chiaro);
+
+      text-shadow:
+        0 1px 0 #fff1b5,
+        0 2px 0 #8d6b34,
+        0 0 16px rgba(255,210,100,0.25),
+        0 0 30px rgba(0,0,0,0.98);
+    }
+
+    h1 span {
+      display: block;
+      font-size: clamp(34px, 5vw, 58px);
+      color: var(--oro);
+    }
+
+    .sottotitolo {
+      margin: 20px 0 0;
+      font-size: clamp(20px, 3vw, 29px);
+      color: #dcc89f;
+    }
+
+    .ornamento {
+      width: 72%;
+      height: 1px;
+      margin: 24px auto 30px;
+      background: linear-gradient(90deg, transparent, rgba(200,155,60,0.65), transparent);
+      position: relative;
+    }
+
+    .ornamento::before {
+      content: "✧";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(200,155,60,0.85);
+      font-size: 18px;
+      background: rgba(14, 10, 6, 0.95);
+      padding: 0 14px;
+    }
+
+    .intro {
+      max-width: 630px;
+      margin: 38px auto 32px;
+      font-size: 21px;
+      line-height: 1.55;
+      color: rgba(216, 192, 147, 0.86);
+    }
+
+    .label-frammenti {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      margin: 34px 0 18px;
+      color: var(--oro);
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .label-frammenti::before,
+    .label-frammenti::after {
+      content: "";
+      width: 150px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--oro));
+      opacity: 0.75;
+    }
+
+    .label-frammenti::after {
+      background: linear-gradient(90deg, var(--oro), transparent);
+    }
+
+    .frammenti {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 22px 20px;
+      margin: 0 auto 48px;
+      max-width: 700px;
+
+      border: 1px solid rgba(200,155,60,0.46);
+      background:
+        radial-gradient(circle at 50% 50%, rgba(200,155,60,0.08), transparent 60%),
+        rgba(0,0,0,0.23);
+      box-shadow:
+        inset 0 0 22px rgba(0,0,0,0.78),
+        0 0 18px rgba(0,0,0,0.55);
+    }
+
+    .sigillo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 34px;
+      color: rgba(141, 107, 52, 0.92);
+      border: 2px solid rgba(125, 90, 35, 0.95);
+
+      background:
+        radial-gradient(circle at 35% 35%, rgba(110,60,20,0.26), rgba(8,8,7,0.98) 68%);
+
+      box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.82),
+        0 0 12px rgba(0,0,0,0.8);
+
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .sigillo::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(125, 90, 35, 0.52);
+    }
+
+    .sigillo.attivo {
+      color: #fff1b5;
+      border-color: #d7a63b;
+
+      background:
+        radial-gradient(circle at 50% 45%, rgba(255,210,105,0.42), rgba(120,15,15,0.92) 62%, rgba(45,4,3,0.98));
+
+      box-shadow:
+        0 0 25px rgba(215,166,59,0.82),
+        0 0 45px rgba(128,17,9,0.48),
+        inset 0 0 22px rgba(255,220,120,0.20);
+
+      text-shadow:
+        0 0 8px rgba(255,241,181,0.82),
+        0 0 18px rgba(215,166,59,0.68);
+    }
+
+    #istruzione {
+      margin: 0 auto 22px;
+      font-size: clamp(22px, 3vw, 30px);
+      color: #d8c093;
+    }
+
+    #numero-frammento {
+      color: #b21b12;
+      text-shadow: 0 0 10px rgba(178, 27, 18, 0.5);
+    }
+
+    input {
+      width: min(600px, 92%);
+      padding: 19px 22px;
+      background: rgba(8,7,5,0.84);
+      color: var(--oro-chiaro);
+      border: 1px solid rgba(200,155,60,0.75);
+      border-radius: 7px;
+      font-size: 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      outline: none;
+
+      box-shadow:
+        inset 0 0 18px rgba(0,0,0,0.88),
+        0 0 12px rgba(0,0,0,0.55);
+    }
+
+    input::placeholder {
+      color: rgba(216,192,147,0.48);
+    }
+
+    input:focus {
+      border-color: var(--oro-chiaro);
+      box-shadow:
+        inset 0 0 18px rgba(0,0,0,0.9),
+        0 0 18px rgba(200,155,60,0.35);
+    }
+
+    button {
+      position: relative;
+      margin-top: 28px;
+      padding: 16px 66px;
+
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 23px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      color: #f4db9b;
+      background: linear-gradient(180deg, #8c1a10, #3b0503);
+      border: 1px solid var(--oro-chiaro);
+      border-radius: 6px;
+
+      box-shadow:
+        inset 0 0 18px rgba(0,0,0,0.55),
+        0 0 0 4px rgba(45, 20, 8, 0.95),
+        0 0 0 5px rgba(200,155,60,0.6),
+        0 0 20px rgba(0,0,0,0.85);
+
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, #a61e12, #4e0805);
+    }
+
+    #messaggio {
+      margin: 52px auto 0;
+      min-height: 98px;
+      max-width: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      text-align: left;
+      font-size: 26px;
+      line-height: 1.3;
+      color: var(--oro);
+    }
+
+    #messaggio:empty {
+      display: none;
+    }
+
+    .icona-messaggio {
+      flex: 0 0 82px;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 39px;
+      color: var(--oro-chiaro);
+
+      border: 1px solid rgba(200,155,60,0.85);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(177, 28, 15, 0.88), rgba(23, 9, 5, 0.98) 70%);
+
+      box-shadow:
+        inset 0 0 18px rgba(0,0,0,0.75),
+        0 0 20px rgba(200,155,60,0.22);
+    }
+
+    .testo-messaggio strong {
+      display: block;
+      color: #e7bf61;
+      font-weight: normal;
+      font-size: 29px;
+      margin-bottom: 5px;
+    }
+
+    .testo-messaggio em {
+      color: #d8c093;
+      font-size: 22px;
+    }
+
+    .citazione {
+      margin: 42px auto 0;
+      padding-top: 34px;
+      max-width: 560px;
+      border-top: 1px solid rgba(200,155,60,0.25);
+      color: rgba(216,192,147,0.54);
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    #finale {
+      display: none;
+    }
+
+    #finale h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.08;
+      margin-bottom: 30px;
+    }
+
+    #finale p {
+      font-size: 26px;
+      line-height: 1.45;
+    }
+
+    #finale h2 {
+      margin-top: 38px;
+      font-family: "Cinzel", Georgia, serif;
+      font-size: clamp(32px, 5vw, 54px);
+      color: var(--oro-chiaro);
+      text-shadow: 0 0 18px rgba(200,155,60,0.5);
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 14px;
+      }
+
+      .grimorio {
+        min-height: auto;
+        padding: 56px 22px 44px;
+      }
+
+      .grimorio::before {
+        inset: 14px;
+      }
+
+      .angolo {
+        display: none;
+      }
+
+      .label-frammenti {
+        font-size: 14px;
+      }
+
+      .label-frammenti::before,
+      .label-frammenti::after {
+        width: 45px;
+      }
+
+      .frammenti {
+        gap: 10px;
+        padding: 18px 14px;
+      }
+
+      .sigillo {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+      }
+
+      input {
+        font-size: 20px;
+      }
+
+      button {
+        width: 80%;
+        padding: 15px 20px;
+        font-size: 19px;
+      }
+
+      #messaggio {
+        flex-direction: column;
+        text-align: center;
+        font-size: 22px;
+      }
+
+      .testo-messaggio strong {
+        font-size: 25px;
+      }
+
+      .testo-messaggio em {
+        font-size: 20px;
+      }
+
+      .citazione {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="pagina">
+
+    <section class="grimorio" id="schermata-principale">
+
+      <div class="angolo alto-sx"></div>
+      <div class="angolo alto-dx"></div>
+      <div class="angolo basso-sx"></div>
+      <div class="angolo basso-dx"></div>
+
+      <div class="contenuto">
+
+        <h1>
+          Il Grimorio
+          <span>dei Frammenti</span>
+        </h1>
+
+        <p class="sottotitolo">
+          La ricerca dei 7 frammenti perduti
+        </p>
+
+        <div class="ornamento"></div>
+
+        <p class="intro">
+          Ho tentato di fermare il tempo.<br>
+          Per evitare il compimento dei 30 anni,
+          ho diviso la mia essenza in sette frammenti.
+        </p>
+
+        <div class="label-frammenti">
+          Frammenti recuperati
+        </div>
+
+        <div class="frammenti">
+          <div class="sigillo" id="f1">✧</div>
+          <div class="sigillo" id="f2">✦</div>
+          <div class="sigillo" id="f3">✶</div>
+          <div class="sigillo" id="f4">✹</div>
+          <div class="sigillo" id="f5">✺</div>
+          <div class="sigillo" id="f6">✷</div>
+          <div class="sigillo" id="f7">✵</div>
+        </div>
+
+        <p id="istruzione">
+          Il grimorio attende il codice del frammento <span id="numero-frammento">1</span>:
+        </p>
+
+        <input id="codice" placeholder="Inserisci la password" autocomplete="off">
+
+        <br>
+
+        <button onclick="sblocca()">
+          Sblocca
+        </button>
+
+        <div class="ornamento"></div>
+
+        <div id="messaggio"></div>
+
+        <p class="citazione">
+          “Ho diviso la mia anima in sette parti<br>
+          per non compiere 30 anni.<br>
+          Ritrovale tutte.”
+        </p>
+
+      </div>
+    </section>
+
