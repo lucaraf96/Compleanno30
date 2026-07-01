@@ -15,7 +15,31 @@
 body {
 
 background:
-radial-gradient(circle at top, #3a2a2a, #080808);
+
+/* effetto luce centrale */
+radial-gradient(
+circle at 50% 30%,
+rgba(120,80,30,0.35),
+transparent 40%
+),
+
+/* ombre laterali */
+linear-gradient(
+90deg,
+#050505,
+#1b1111 50%,
+#050505
+),
+
+/* texture "carta antica" */
+repeating-linear-gradient(
+45deg,
+rgba(255,255,255,0.02) 0px,
+rgba(255,255,255,0.02) 2px,
+transparent 2px,
+transparent 8px
+);
+
 
 color:#e8d8b0;
 
@@ -34,6 +58,10 @@ align-items:center;
 
 
 .grimorio {
+
+position:relative;
+
+overflow:hidden;
 
 width:500px;
 
