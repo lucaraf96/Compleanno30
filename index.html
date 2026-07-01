@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Registro dei Frammenti</title>
 
+
 <style>
+
 
 body {
 
-    background:
-    radial-gradient(circle at top, #3a2a2a, #080808);
+background:
+radial-gradient(circle at top, #3a2a2a, #080808);
 
-    color: #e8d8b0;
+color:#e8d8b0;
 
-    font-family: Georgia, serif;
+font-family:Georgia, serif;
 
-    min-height:100vh;
+min-height:100vh;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
 }
 
@@ -31,30 +35,30 @@ body {
 
 .grimorio {
 
-    width: 500px;
+width:500px;
 
-    max-width:90%;
+max-width:90%;
 
-    padding:40px;
+padding:40px;
 
-    background:
+background:
 
-    linear-gradient(
-    rgba(20,15,15,0.95),
-    rgba(10,8,8,0.95)
-    );
+linear-gradient(
+rgba(20,15,15,0.95),
+rgba(10,8,8,0.95)
+);
 
-    border:2px solid #8c6a35;
+border:2px solid #8c6a35;
 
-    border-radius:15px;
+border-radius:15px;
 
-    box-shadow:
+box-shadow:
 
-    0 0 30px rgba(0,0,0,0.9),
+0 0 30px rgba(0,0,0,0.9),
 
-    inset 0 0 30px rgba(140,106,53,0.2);
+inset 0 0 30px rgba(140,106,53,0.2);
 
-    text-align:center;
+text-align:center;
 
 }
 
@@ -62,12 +66,12 @@ body {
 
 h1 {
 
-    font-size:38px;
+font-size:38px;
 
-    color:#d4af37;
+color:#d4af37;
 
-    text-shadow:
-    0 0 15px rgba(212,175,55,0.5);
+text-shadow:
+0 0 15px rgba(212,175,55,0.5);
 
 }
 
@@ -75,47 +79,72 @@ h1 {
 
 h3 {
 
-    font-weight:normal;
+font-weight:normal;
 
-    color:#bda77a;
-
-}
-
-
-
-.progresso-container {
-
-    background:#1a1414;
-
-    border:1px solid #6d5128;
-
-    border-radius:20px;
-
-    height:20px;
-
-    overflow:hidden;
-
-    margin:25px 0;
+color:#bda77a;
 
 }
 
 
 
-.progresso {
+/* I 7 frammenti */
 
-    height:100%;
+.frammenti {
 
-    width:0%;
+display:flex;
 
-    background:
+justify-content:center;
 
-    linear-gradient(
-    90deg,
-    #5b0000,
-    #d4af37
-    );
+gap:12px;
 
-    transition:0.5s;
+margin:25px 0;
+
+}
+
+
+
+.sigillo {
+
+width:40px;
+
+height:40px;
+
+border-radius:50%;
+
+border:2px solid #8c6a35;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#8c6a35;
+
+transition:0.4s;
+
+font-weight:bold;
+
+}
+
+
+
+.sigillo.attivo {
+
+background:
+
+linear-gradient(
+#7a0000,
+#b8860b
+);
+
+color:#fff2bd;
+
+border-color:#d4af37;
+
+box-shadow:
+
+0 0 18px rgba(212,175,55,0.8);
 
 }
 
@@ -123,23 +152,21 @@ h3 {
 
 input {
 
-    background:#100c0c;
+background:#100c0c;
 
-    color:#e8d8b0;
+color:#e8d8b0;
 
-    border:
+border:1px solid #8c6a35;
 
-    1px solid #8c6a35;
+padding:12px;
 
-    padding:12px;
+width:80%;
 
-    width:80%;
+font-size:18px;
 
-    font-size:18px;
+border-radius:8px;
 
-    border-radius:8px;
-
-    text-align:center;
+text-align:center;
 
 }
 
@@ -147,21 +174,21 @@ input {
 
 button {
 
-    margin-top:15px;
+margin-top:15px;
 
-    padding:12px 30px;
+padding:12px 30px;
 
-    background:#4b0000;
+background:#4b0000;
 
-    color:#e8d8b0;
+color:#e8d8b0;
 
-    border:1px solid #d4af37;
+border:1px solid #d4af37;
 
-    border-radius:8px;
+border-radius:8px;
 
-    font-size:18px;
+font-size:18px;
 
-    cursor:pointer;
+cursor:pointer;
 
 }
 
@@ -169,7 +196,7 @@ button {
 
 button:hover {
 
-    background:#700000;
+background:#700000;
 
 }
 
@@ -177,15 +204,15 @@ button:hover {
 
 #messaggio {
 
-    margin-top:25px;
+margin-top:25px;
 
-    min-height:60px;
+min-height:60px;
 
-    font-size:20px;
+font-size:20px;
 
-    font-style:italic;
+font-style:italic;
 
-    color:#f0dfb0;
+color:#f0dfb0;
 
 }
 
@@ -193,18 +220,22 @@ button:hover {
 
 #finale {
 
-    text-align:center;
+text-align:center;
 
 }
+
+
 </style>
 
 </head>
+
 
 
 <body>
 
 
 <div class="grimorio">
+
 
 <h1>📜 Registro dei Frammenti</h1>
 
@@ -217,14 +248,19 @@ ho diviso la mia essenza in sette frammenti.
 </p>
 
 
+
 <div class="frammenti">
-Frammenti recuperati: <b>0 / 7</b>
+
+<div class="sigillo" id="f1">1</div>
+<div class="sigillo" id="f2">2</div>
+<div class="sigillo" id="f3">3</div>
+<div class="sigillo" id="f4">4</div>
+<div class="sigillo" id="f5">5</div>
+<div class="sigillo" id="f6">6</div>
+<div class="sigillo" id="f7">7</div>
+
 </div>
 
-
-<div class="barra">
-<div class="progresso"></div>
-</div>
 
 
 <p id="istruzione">
@@ -232,14 +268,19 @@ Inserisci il codice del primo frammento:
 </p>
 
 
+
 <input id="codice" placeholder="Scrivi il codice">
 
 
 <br>
 
+
 <button onclick="sblocca()">
+
 Sblocca
+
 </button>
+
 
 
 <div id="messaggio"></div>
@@ -249,49 +290,62 @@ Sblocca
 
 
 
+
+
 <script>
+
 
 let livello = 0;
 
 
+
 const frammenti = [
 
-{
-parola: "nascita",
-testo: "✨ Primo frammento recuperato.<br><br>Il primo sigillo è spezzato."
-},
 
 {
-parola: "tempo",
-testo: "⏳ Secondo frammento recuperato.<br><br>Il tempo ricomincia a scorrere."
+parola:"nascita",
+testo:"✨ Primo frammento recuperato.<br><br>Il primo sigillo è spezzato."
 },
 
-{
-parola: "ricordo",
-testo: "📜 Terzo frammento recuperato.<br><br>Un ricordo perduto ritorna."
-},
 
 {
-parola: "ombra",
-testo: "🌑 Quarto frammento recuperato."
+parola:"tempo",
+testo:"⏳ Secondo frammento recuperato.<br><br>Il tempo ricomincia a scorrere."
 },
 
-{
-parola: "coraggio",
-testo: "🔥 Quinto frammento recuperato."
-},
 
 {
-parola: "sogno",
-testo: "✨ Sesto frammento recuperato."
+parola:"ricordo",
+testo:"📜 Terzo frammento recuperato.<br><br>Un ricordo perduto ritorna."
 },
 
+
 {
-parola: "anima",
-testo: "🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
+parola:"ombra",
+testo:"🌑 Quarto frammento recuperato."
+},
+
+
+{
+parola:"coraggio",
+testo:"🔥 Quinto frammento recuperato."
+},
+
+
+{
+parola:"sogno",
+testo:"✨ Sesto frammento recuperato."
+},
+
+
+{
+parola:"anima",
+testo:"🎂 Settimo frammento recuperato.<br><br>L'anima è completa."
 }
 
+
 ];
+
 
 
 
@@ -302,68 +356,68 @@ let input =
 document.getElementById("codice").value.toLowerCase();
 
 
+
 if(input === frammenti[livello].parola){
 
 
 livello++;
+
+
+
+document.getElementById("f"+livello)
+.classList.add("attivo");
+
+
+
 if(livello < 7){
 
+
 document.getElementById("istruzione").innerHTML =
-"Il grimorio attende il codice del frammento " + (livello + 1) + ":";
+
+"Il grimorio attende il codice del frammento " 
++ (livello+1) + ":";
+
 
 }
 
 else {
 
-document.getElementById("istruzione").innerHTML =
-"";
+
+document.getElementById("istruzione").innerHTML="";
 
 }
 
-document.querySelector(".progresso").style.width =
-(livello * 14.28) + "%";
-
-
-document.querySelector(".frammenti").innerHTML =
-"Frammenti recuperati: <b>" + livello + " / 7</b>";
 
 
 document.getElementById("codice").value="";
 
 
+
 document.getElementById("messaggio").innerHTML =
+
 frammenti[livello-1].testo;
-if(livello < 7){
-
-document.getElementById("istruzione").innerHTML =
-"Il grimorio attende il codice del frammento " + (livello + 1) + ":";
-
-}
-
-else {
-
-document.getElementById("istruzione").innerHTML =
-"";
-
-}
 
 
-if(livello === 7){
+
+if(livello===7){
+
 
 document.querySelector(".grimorio").style.display="none";
 
+
 document.getElementById("finale").style.display="block";
 
-}
-
 
 }
 
 
-else{
+}
 
 
-let errori = [
+else {
+
+
+let errori=[
 
 "Il grimorio non accetta questa parola.",
 
@@ -373,7 +427,9 @@ let errori = [
 
 
 document.getElementById("messaggio").innerHTML =
+
 errori[Math.floor(Math.random()*errori.length)];
+
 
 
 document.getElementById("codice").value="";
@@ -382,24 +438,45 @@ document.getElementById("codice").value="";
 }
 
 
+
 }
+
+
 
 </script>
 
+
+
+
+
 <div id="finale" style="display:none;" class="grimorio">
+
 
 <h1>✨ ANIMA RIPRISTINATA ✨</h1>
 
+
 <p>
+
 Tutti i frammenti sono stati recuperati.
+
 <br><br>
+
 Il tempo può finalmente riprendere il suo corso.
+
 </p>
 
+
 <h2>
+
 🎂 30 ANNI SBLOCCATI 🎂
+
 </h2>
 
+
 </div>
+
+
+
 </body>
+
 </html>
