@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Il Grimorio dei Frammenti</title>
 
   <style>
@@ -12,182 +11,127 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 24px;
-
-      color: #d8c08a;
       font-family: Georgia, "Times New Roman", serif;
+      color: #d8bd7a;
 
       background:
-        radial-gradient(circle at 82% 8%, rgba(255, 160, 45, 0.30), transparent 13%),
-        radial-gradient(circle at 88% 82%, rgba(255, 120, 30, 0.22), transparent 15%),
-        radial-gradient(circle at 50% 28%, rgba(145, 95, 35, 0.18), transparent 34%),
-        linear-gradient(90deg, #020202 0%, #100b08 18%, #21170f 50%, #100b08 82%, #020202 100%);
-
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        repeating-linear-gradient(
-          35deg,
-          rgba(255,255,255,0.025) 0px,
-          rgba(255,255,255,0.025) 1px,
-          transparent 1px,
-          transparent 7px
-        ),
-        radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.58) 72%, rgba(0,0,0,0.95) 100%);
-      mix-blend-mode: overlay;
-      opacity: 0.65;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      right: 4%;
-      top: 4%;
-      width: 90px;
-      height: 260px;
-      border-radius: 50%;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 8%, rgba(255, 214, 120, 0.95), rgba(255, 125, 25, 0.28) 18%, transparent 36%),
-        linear-gradient(to bottom, rgba(155, 90, 30, 0.14), transparent);
-      filter: blur(1px);
-      opacity: 0.85;
+        radial-gradient(circle at 82% 12%, rgba(214, 129, 36, 0.34) 0%, rgba(214, 129, 36, 0.08) 12%, transparent 26%),
+        radial-gradient(circle at 20% 18%, rgba(120, 72, 25, 0.24) 0%, transparent 30%),
+        radial-gradient(circle at 50% 45%, rgba(117, 78, 35, 0.22) 0%, transparent 47%),
+        linear-gradient(90deg, #050403 0%, #16100b 28%, #21170f 50%, #130d09 72%, #030302 100%);
     }
 
     .grimorio {
-      position: relative;
       width: 760px;
       max-width: 94vw;
-      padding: 46px 54px;
+      padding: 44px 52px;
       text-align: center;
-      overflow: hidden;
+      position: relative;
 
       background:
-        linear-gradient(rgba(25, 21, 15, 0.94), rgba(7, 7, 6, 0.97)),
+        linear-gradient(rgba(30, 25, 18, 0.96), rgba(12, 10, 8, 0.98)),
         repeating-linear-gradient(
-          0deg,
-          rgba(255,255,255,0.025) 0px,
-          rgba(255,255,255,0.025) 1px,
+          45deg,
+          rgba(255, 230, 170, 0.025) 0px,
+          rgba(255, 230, 170, 0.025) 1px,
           transparent 1px,
-          transparent 6px
+          transparent 8px
         );
 
-      border: 1px solid rgba(181, 129, 54, 0.75);
-      border-radius: 8px;
+      border: 2px solid rgba(176, 124, 50, 0.78);
+      border-radius: 10px;
 
       box-shadow:
-        0 0 48px rgba(0,0,0,0.95),
-        inset 0 0 70px rgba(0,0,0,0.9),
-        inset 0 0 22px rgba(186, 130, 55, 0.16);
+        0 0 45px rgba(0, 0, 0, 0.92),
+        inset 0 0 45px rgba(0, 0, 0, 0.78),
+        inset 0 0 20px rgba(184, 128, 55, 0.18);
     }
 
-    .grimorio::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(172, 123, 55, 0.58);
-      pointer-events: none;
-      box-shadow:
-        inset 0 0 20px rgba(176, 122, 42, 0.13),
-        0 0 8px rgba(0,0,0,0.8);
-    }
-
-    .grimorio::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 10% 15%, rgba(255,255,255,0.07), transparent 10%),
-        radial-gradient(circle at 88% 72%, rgba(185, 95, 25, 0.10), transparent 18%),
-        linear-gradient(90deg, rgba(0,0,0,0.46), transparent 18%, transparent 82%, rgba(0,0,0,0.58));
-      opacity: 0.75;
-    }
-
-    .contenuto {
+    .cornice {
+      border: 1px solid rgba(171, 119, 48, 0.5);
+      padding: 34px 34px 28px;
       position: relative;
-      z-index: 2;
+    }
+
+    .cornice::before,
+    .cornice::after {
+      content: "✦";
+      position: absolute;
+      color: #a37739;
+      font-size: 18px;
+      background: #17120d;
+      padding: 0 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cornice::before {
+      top: -12px;
+    }
+
+    .cornice::after {
+      bottom: -12px;
     }
 
     .ornamento {
-      color: #8d6a36;
-      margin: 8px auto 20px;
+      color: #9f763e;
       letter-spacing: 8px;
+      margin-bottom: 18px;
       font-size: 18px;
-      opacity: 0.9;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(42px, 7vw, 76px);
+      font-size: clamp(42px, 7vw, 72px);
       line-height: 0.95;
-      color: #c99a45;
       font-weight: normal;
+      color: #c99a45;
       letter-spacing: 1px;
       text-shadow:
-        0 0 6px rgba(255, 204, 103, 0.28),
-        0 3px 0 rgba(0,0,0,0.85);
-    }
-
-    h2 {
-      color: #d6ad5d;
-      font-weight: normal;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(214, 173, 93, 0.28);
+        0 0 8px rgba(222, 170, 74, 0.35),
+        0 3px 0 rgba(0, 0, 0, 0.85);
     }
 
     .sottotitolo {
-      margin-top: 10px;
+      margin-top: 14px;
       font-size: 24px;
-      color: #c8b17d;
-      opacity: 0.95;
+      color: #cbb27c;
     }
 
     .testo-intro {
-      margin: 28px auto 26px;
+      margin: 28px auto 22px;
       max-width: 570px;
       font-size: 19px;
       line-height: 1.55;
-      color: #b79f70;
+      color: #bca474;
     }
 
     .separatore {
-      height: 1px;
-      margin: 25px auto;
       width: 82%;
-      background: linear-gradient(90deg, transparent, rgba(179, 126, 48, 0.75), transparent);
-      position: relative;
-    }
-
-    .separatore::before {
-      content: "✦";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: #11100d;
-      padding: 0 12px;
-      color: #9b743b;
+      height: 1px;
+      margin: 28px auto;
+      background: linear-gradient(90deg, transparent, rgba(185, 128, 45, 0.85), transparent);
     }
 
     .label-frammenti {
-      margin-bottom: 14px;
-      color: #c69445;
+      color: #c99542;
       font-size: 17px;
       letter-spacing: 3px;
       text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     .frammenti {
@@ -195,11 +139,468 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 14px;
-      margin: 18px auto 30px;
+      margin: 16px auto 28px;
       padding: 18px;
-      border: 1px solid rgba(164, 113, 44, 0.45);
-      background: rgba(0,0,0,0.18);
       max-width: 560px;
+
+      border: 1px solid rgba(169, 115, 42, 0.55);
+      background: rgba(0, 0, 0, 0.22);
+      border-radius: 8px;
     }
 
     .sigillo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 23px;
+      font-weight: bold;
+      color: #79623b;
+
+      background:
+        radial-gradient(circle, #17120e 0%, #090806 70%, #030302 100%);
+
+      border: 2px solid rgba(121, 88, 42, 0.84);
+
+      box-shadow:
+        inset 0 0 16px rgba(0, 0, 0, 0.95),
+        0 0 0 3px rgba(74, 51, 24, 0.35),
+        0 0 12px rgba(0, 0, 0, 0.85);
+
+      transition: all 0.35s ease;
+    }
+
+    .sigillo::before {
+      content: "✦";
+      position: absolute;
+      font-size: 20px;
+      color: rgba(135, 103, 55, 0.35);
+    }
+
+    .sigillo span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .sigillo.attivo {
+      color: #ffe4a8;
+      background:
+        radial-gradient(circle at 50% 35%, #9e2518 0%, #5b0b07 48%, #170504 100%);
+
+      border-color: #d8a64b;
+
+      box-shadow:
+        inset 0 0 16px rgba(255, 200, 90, 0.2),
+        0 0 0 3px rgba(135, 86, 28, 0.55),
+        0 0 24px rgba(219, 157, 54, 0.65);
+      transform: translateY(-3px) scale(1.06);
+    }
+
+    .sigillo.attivo::before {
+      content: "✶";
+      color: rgba(255, 217, 125, 0.62);
+      text-shadow: 0 0 10px rgba(255, 200, 90, 0.8);
+    }
+
+    .istruzione {
+      margin-top: 28px;
+      margin-bottom: 18px;
+      font-size: 25px;
+      color: #d2b779;
+    }
+
+    .numero-frammento {
+      color: #c62017;
+      text-shadow: 0 0 9px rgba(198, 32, 23, 0.8);
+    }
+
+    input {
+      width: min(100%, 520px);
+      padding: 17px 20px;
+
+      background: #090806;
+      color: #ddc38a;
+
+      border: 1px solid rgba(201, 143, 55, 0.85);
+      border-radius: 8px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-style: italic;
+      text-align: center;
+      outline: none;
+
+      box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.88),
+        0 0 14px rgba(0, 0, 0, 0.6);
+    }
+
+    input::placeholder {
+      color: rgba(210, 190, 145, 0.45);
+    }
+
+    input:focus {
+      border-color: #d9a94c;
+      box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.88),
+        0 0 22px rgba(199, 142, 49, 0.38);
+    }
+
+    button {
+      margin-top: 22px;
+      padding: 13px 50px;
+
+      color: #f2d899;
+      background: linear-gradient(#962016, #500805);
+
+      border: 1px solid #d3a14a;
+      border-radius: 7px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      box-shadow:
+        inset 0 0 12px rgba(255, 200, 87, 0.18),
+        0 0 0 3px rgba(82, 47, 15, 0.55),
+        0 0 18px rgba(0, 0, 0, 0.75);
+
+      transition: all 0.25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(#b32619, #6a0c07);
+      box-shadow:
+        inset 0 0 14px rgba(255, 213, 120, 0.23),
+        0 0 0 3px rgba(119, 75, 24, 0.65),
+        0 0 24px rgba(174, 81, 31, 0.35);
+    }
+
+    #messaggio {
+      margin: 34px auto 0;
+      min-height: 80px;
+      max-width: 550px;
+      color: #e1c58b;
+      font-size: 22px;
+      line-height: 1.45;
+    }
+
+    .messaggio-ok {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      text-align: left;
+    }
+
+    .icona-messaggio {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #e4bb5f;
+      font-size: 31px;
+
+      border: 1px solid rgba(215, 165, 75, 0.85);
+      background:
+        radial-gradient(circle, #54100b 0%, #170605 68%, #050403 100%);
+
+      box-shadow:
+        inset 0 0 13px rgba(255, 190, 70, 0.18),
+        0 0 18px rgba(158, 87, 28, 0.32);
+    }
+
+    .testo-messaggio strong {
+      display: block;
+      color: #e2b765;
+      font-size: 25px;
+      font-weight: normal;
+      margin-bottom: 4px;
+    }
+
+    .testo-messaggio em {
+      color: #c8af7b;
+      font-size: 20px;
+    }
+
+    .errore {
+      color: #d19a77;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .frase-finale {
+      margin-top: 8px;
+      color: rgba(194, 174, 131, 0.66);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .nascosto {
+      display: none;
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding: 14px;
+        align-items: flex-start;
+      }
+
+      .grimorio {
+        padding: 24px 18px;
+      }
+
+      .cornice {
+        padding: 28px 16px 24px;
+      }
+
+      .sottotitolo {
+        font-size: 20px;
+      }
+
+      .testo-intro {
+        font-size: 17px;
+      }
+
+      .sigillo {
+        width: 48px;
+        height: 48px;
+        font-size: 19px;
+      }
+
+      .istruzione {
+        font-size: 21px;
+      }
+
+      input {
+        font-size: 19px;
+      }
+
+      button {
+        width: 100%;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .messaggio-ok {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="schermataGrimorio" class="grimorio">
+    <div class="cornice">
+
+      <div class="ornamento">✦ ✧ ✦</div>
+
+      <h1>Il Grimorio<br>dei Frammenti</h1>
+
+      <div class="sottotitolo">
+        La ricerca dei 7 sigilli perduti
+      </div>
+
+      <div class="separatore"></div>
+
+      <p class="testo-intro">
+        Ho tentato di fermare il tempo.<br>
+        Per evitare il compimento dei 30 anni,<br>
+        ho diviso la mia essenza in sette frammenti.
+      </p>
+
+      <div class="label-frammenti">
+        Sigilli recuperati
+      </div>
+
+      <div class="frammenti">
+        <div class="sigillo" id="f1"><span>1</span></div>
+        <div class="sigillo" id="f2"><span>2</span></div>
+        <div class="sigillo" id="f3"><span>3</span></div>
+        <div class="sigillo" id="f4"><span>4</span></div>
+        <div class="sigillo" id="f5"><span>5</span></div>
+        <div class="sigillo" id="f6"><span>6</span></div>
+        <div class="sigillo" id="f7"><span>7</span></div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <p id="istruzione" class="istruzione">
+        Il grimorio attende il codice del sigillo
+        <span class="numero-frammento">1</span>:
+      </p>
+
+      <input id="codice" placeholder="Inserisci la password" autocomplete="off">
+
+      <br>
+
+      <button onclick="sblocca()">
+        Sblocca
+      </button>
+
+      <div id="messaggio"></div>
+
+      <div class="separatore"></div>
+
+      <p class="frase-finale">
+        “Ho diviso la mia anima in sette parti<br>
+        per non compiere 30 anni.<br>
+        Ritrovale tutte.”
+      </p>
+
+    </div>
+  </div>
+
+  <div id="finale" class="grimorio nascosto">
+    <div class="cornice">
+
+      <div class="ornamento">✦ ✧ ✦</div>
+
+      <h1>Anima<br>Ripristinata</h1>
+
+      <div class="sottotitolo">
+        Tutti i sigilli sono stati spezzati
+      </div>
+
+      <div class="separatore"></div>
+
+      <p class="testo-intro">
+        I sette frammenti sono stati recuperati.<br><br>
+        Il tempo può finalmente riprendere il suo corso.
+      </p>
+
+      <h2>
+        30 anni sbloccati
+      </h2>
+
+      <div class="separatore"></div>
+
+      <p class="frase-finale">
+        Il grimorio si chiude.<br>
+        Ma la leggenda resta incisa nella cera e nell’oro.
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    let livello = 0;
+
+    const frammenti = [
+      {
+        parola: "nascita",
+        titolo: "Primo sigillo spezzato.",
+        testo: "Il primo frammento è tornato al suo posto."
+      },
+      {
+        parola: "tempo",
+        titolo: "Secondo sigillo spezzato.",
+        testo: "Il tempo ricomincia lentamente a scorrere."
+      },
+      {
+        parola: "ricordo",
+        titolo: "Terzo sigillo spezzato.",
+        testo: "Un ricordo perduto riaffiora dalle pagine del grimorio."
+      },
+      {
+        parola: "ombra",
+        titolo: "Quarto sigillo spezzato.",
+        testo: "L’ombra arretra, ma non scompare del tutto."
+      },
+      {
+        parola: "coraggio",
+        titolo: "Quinto sigillo spezzato.",
+        testo: "Una fiamma antica si riaccende nel buio."
+      },
+      {
+        parola: "sogno",
+        titolo: "Sesto sigillo spezzato.",
+        testo: "Il sogno ritrova la via tra le pieghe del tempo."
+      },
+      {
+        parola: "anima",
+        titolo: "Settimo sigillo spezzato.",
+        testo: "L’anima è completa. Il rito è compiuto."
+      }
+    ];
+
+    function sblocca() {
+      if (livello >= frammenti.length) {
+        return;
+      }
+
+      const campoCodice = document.getElementById("codice");
+      const messaggio = document.getElementById("messaggio");
+      const istruzione = document.getElementById("istruzione");
+
+      const input = campoCodice.value.trim().toLowerCase();
+
+      if (input === frammenti[livello].parola) {
+        livello++;
+
+        document.getElementById("f" + livello).classList.add("attivo");
+
+        messaggio.innerHTML =
+          '<div class="messaggio-ok">' +
+            '<div class="icona-messaggio">✶</div>' +
+            '<div class="testo-messaggio">' +
+              '<strong>' + frammenti[livello - 1].titolo + '</strong>' +
+              '<em>' + frammenti[livello - 1].testo + '</em>' +
+            '</div>' +
+          '</div>';
+
+        campoCodice.value = "";
+
+        if (livello < frammenti.length) {
+          istruzione.innerHTML =
+            'Il grimorio attende il codice del sigillo ' +
+            '<span class="numero-frammento">' + (livello + 1) + '</span>:';
+        } else {
+          setTimeout(function () {
+            document.getElementById("schermataGrimorio").classList.add("nascosto");
+            document.getElementById("finale").classList.remove("nascosto");
+          }, 1200);
+        }
+
+      } else {
+        const errori = [
+          "Il grimorio non riconosce questa parola.",
+          "Le rune rimangono mute. Riprova.",
+          "Il sigillo resiste. La password non è corretta.",
+          "Un sussurro si perde nel buio: codice errato."
+        ];
+
+        messaggio.innerHTML =
+          '<div class="errore">' +
+            errori[Math.floor(Math.random() * errori.length)] +
+          '</div>';
+
+        campoCodice.value = "";
+      }
+    }
+
+    document.getElementById("codice").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        sblocca();
+      }
+    });
+  </script>
+
+</body>
+
+</html>
