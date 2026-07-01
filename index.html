@@ -413,7 +413,7 @@
       <h1>Il Grimorio<br>dei Frammenti</h1>
 
       <div class="sottotitolo">
-        La ricerca dei 7 sigilli perduti
+        La ricerca dei 7 frammenti perduti
       </div>
 
       <div class="separatore"></div>
@@ -421,11 +421,11 @@
       <p class="testo-intro">
         Ho tentato di fermare il tempo.<br>
         Per evitare il compimento dei 30 anni,<br>
-        ho diviso la mia essenza in sette frammenti.
+        ho diviso la mia anima in sette frammenti.
       </p>
 
       <div class="label-frammenti">
-        Sigilli recuperati
+        Frammenti recuperati
       </div>
 
       <div class="frammenti">
@@ -441,7 +441,7 @@
       <div class="separatore"></div>
 
       <p id="istruzione" class="istruzione">
-        Il grimorio attende il codice del sigillo
+        Il grimorio attende il codice del frammento
         <span class="numero-frammento">1</span>:
       </p>
 
@@ -474,7 +474,7 @@
       <h1>Anima<br>Ripristinata</h1>
 
       <div class="sottotitolo">
-        Tutti i sigilli sono stati spezzati
+        Tutti i frammenti sono stati recuperati
       </div>
 
       <div class="separatore"></div>
@@ -504,37 +504,37 @@
     const frammenti = [
       {
         parola: "nascita",
-        titolo: "Primo sigillo spezzato.",
+        titolo: "Primo frammento ritrovato.",
         testo: "Il primo frammento è tornato al suo posto."
       },
       {
         parola: "tempo",
-        titolo: "Secondo sigillo spezzato.",
+        titolo: "Secondo frammento ritrovato.",
         testo: "Il tempo ricomincia lentamente a scorrere."
       },
       {
         parola: "ricordo",
-        titolo: "Terzo sigillo spezzato.",
+        titolo: "Terzo frammento ritrovato.",
         testo: "Un ricordo perduto riaffiora dalle pagine del grimorio."
       },
       {
         parola: "ombra",
-        titolo: "Quarto sigillo spezzato.",
+        titolo: "Quarto frammento ritrovato.",
         testo: "L’ombra arretra, ma non scompare del tutto."
       },
       {
         parola: "coraggio",
-        titolo: "Quinto sigillo spezzato.",
+        titolo: "Quinto frammento ritrovato.",
         testo: "Una fiamma antica si riaccende nel buio."
       },
       {
         parola: "sogno",
-        titolo: "Sesto sigillo spezzato.",
+        titolo: "Sesto frammento ritrovato.",
         testo: "Il sogno ritrova la via tra le pieghe del tempo."
       },
       {
         parola: "anima",
-        titolo: "Settimo sigillo spezzato.",
+        titolo: "Settimo frammento ritrovato.",
         testo: "L’anima è completa. Il rito è compiuto."
       }
     ];
@@ -568,7 +568,7 @@
 
         if (livello < frammenti.length) {
           istruzione.innerHTML =
-            'Il grimorio attende il codice del sigillo ' +
+            'Il grimorio attende il codice del frammento ' +
             '<span class="numero-frammento">' + (livello + 1) + '</span>:';
         } else {
           setTimeout(function () {
@@ -581,7 +581,7 @@
         const errori = [
           "Il grimorio non riconosce questa parola.",
           "Le rune rimangono mute. Riprova.",
-          "Il sigillo resiste. La password non è corretta.",
+          "Il codice non è corretto.",
           "Un sussurro si perde nel buio: codice errato."
         ];
 
