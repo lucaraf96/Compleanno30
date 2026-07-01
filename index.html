@@ -2,33 +2,7 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il Grimorio dei Frammenti</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      font-family: Georgia, "Times New Roman", serif;
-      color: #d8bd7a;
-
-      background:
-        radial-gradient(circle at 82% 12%, rgba(214, 129, 36, 0.34) 0%, rgba(214, 129, 36, 0.08) 12%, transparent 26%),
+, 129, 36, 0.34) 0%, rgba(214, 129, 36, 0.08) 12%, transparent 26%),  <meta charset="UTF-8">
         radial-gradient(circle at 20% 18%, rgba(120, 72, 25, 0.24) 0%, transparent 30%),
         radial-gradient(circle at 50% 45%, rgba(117, 78, 35, 0.22) 0%, transparent 47%),
         linear-gradient(90deg, #050403 0%, #16100b 28%, #21170f 50%, #130d09 72%, #030302 100%);
@@ -105,6 +79,14 @@
         0 3px 0 rgba(0, 0, 0, 0.85);
     }
 
+    h2 {
+      margin-top: 24px;
+      color: #d7b56d;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
     .sottotitolo {
       margin-top: 14px;
       font-size: 24px;
@@ -138,73 +120,114 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       margin: 16px auto 28px;
-      padding: 18px;
-      max-width: 560px;
+      padding: 20px 18px;
+      max-width: 610px;
 
       border: 1px solid rgba(169, 115, 42, 0.55);
-      background: rgba(0, 0, 0, 0.22);
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.28),
+          rgba(0, 0, 0, 0.18)
+        );
       border-radius: 8px;
+
+      box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.55),
+        0 0 10px rgba(0, 0, 0, 0.35);
     }
 
-    .sigillo {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
+    /*
+      FRAMMENTI RUNICI
+      Tavolette verticali al posto dei cerchi.
+    */
+
+    .frammento {
+      width: 62px;
+      height: 78px;
+      border-radius: 8px 8px 14px 14px;
       position: relative;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      font-size: 23px;
-      font-weight: bold;
-      color: #79623b;
+      font-size: 24px;
+      font-weight: normal;
+      color: #7f6840;
 
       background:
-        radial-gradient(circle, #17120e 0%, #090806 70%, #030302 100%);
+        linear-gradient(145deg, #21190f 0%, #0d0a07 58%, #050403 100%);
 
-      border: 2px solid rgba(121, 88, 42, 0.84);
+      border: 1px solid rgba(139, 101, 49, 0.8);
 
       box-shadow:
-        inset 0 0 16px rgba(0, 0, 0, 0.95),
-        0 0 0 3px rgba(74, 51, 24, 0.35),
-        0 0 12px rgba(0, 0, 0, 0.85);
+        inset 0 0 18px rgba(0, 0, 0, 0.92),
+        inset 0 0 4px rgba(201, 150, 74, 0.18),
+        0 0 0 2px rgba(63, 43, 20, 0.55),
+        0 8px 18px rgba(0, 0, 0, 0.65);
 
-      transition: all 0.35s ease;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        background 0.35s ease;
     }
 
-    .sigillo::before {
-      content: "✦";
+    .frammento::before {
+      content: "";
       position: absolute;
-      font-size: 20px;
-      color: rgba(135, 103, 55, 0.35);
+      inset: 7px;
+      border: 1px solid rgba(132, 96, 48, 0.42);
+      border-radius: 5px 5px 10px 10px;
+      pointer-events: none;
     }
 
-    .sigillo span {
+    .frammento::after {
+      content: "ᛟ";
+      position: absolute;
+      top: 9px;
+      font-size: 18px;
+      color: rgba(125, 95, 52, 0.36);
+      pointer-events: none;
+    }
+
+    .frammento span {
       position: relative;
       z-index: 2;
+      margin-top: 18px;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.85);
     }
 
-    .sigillo.attivo {
-      color: #ffe4a8;
-      background:
-        radial-gradient(circle at 50% 35%, #9e2518 0%, #5b0b07 48%, #170504 100%);
+    .frammento.attivo {
+      color: #f3d38f;
 
-      border-color: #d8a64b;
+      background:
+        linear-gradient(145deg, #6f1610 0%, #3f0805 48%, #100503 100%);
+
+      border-color: #d0a052;
 
       box-shadow:
-        inset 0 0 16px rgba(255, 200, 90, 0.2),
-        0 0 0 3px rgba(135, 86, 28, 0.55),
-        0 0 24px rgba(219, 157, 54, 0.65);
-      transform: translateY(-3px) scale(1.06);
+        inset 0 0 18px rgba(255, 197, 89, 0.16),
+        inset 0 0 4px rgba(255, 218, 137, 0.28),
+        0 0 0 2px rgba(143, 92, 32, 0.72),
+        0 0 22px rgba(205, 143, 47, 0.55),
+        0 8px 20px rgba(0, 0, 0, 0.72);
+
+      transform: translateY(-4px);
     }
 
-    .sigillo.attivo::before {
-      content: "✶";
-      color: rgba(255, 217, 125, 0.62);
-      text-shadow: 0 0 10px rgba(255, 200, 90, 0.8);
+    .frammento.attivo::before {
+      border-color: rgba(240, 190, 95, 0.68);
+      box-shadow: inset 0 0 12px rgba(255, 195, 82, 0.16);
+    }
+
+    .frammento.attivo::after {
+      content: "ᛟ";
+      color: rgba(255, 218, 128, 0.68);
+      text-shadow: 0 0 10px rgba(255, 194, 80, 0.75);
     }
 
     .istruzione {
@@ -215,10 +238,9 @@
     }
 
     .numero-frammento {
-     color: inherit;
-     text-shadow: none;
+      color: inherit;
+      text-shadow: none;
     }
-
 
     input {
       width: min(100%, 520px);
@@ -361,44 +383,135 @@
       }
 
       .grimorio {
-        padding: 24px 18px;
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 16px;
       }
 
       .cornice {
-        padding: 28px 16px 24px;
+        padding: 28px 14px 24px;
+      }
+
+      .ornamento {
+        font-size: 16px;
+        letter-spacing: 6px;
+      }
+
+      h1 {
+        font-size: 45px;
+        line-height: 0.98;
       }
 
       .sottotitolo {
-        font-size: 20px;
+        font-size: 19px;
+        line-height: 1.35;
       }
 
       .testo-intro {
-        font-size: 17px;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-top: 24px;
       }
 
-      .sigillo {
-        width: 48px;
-        height: 48px;
-        font-size: 19px;
+      .label-frammenti {
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+
+      .frammenti {
+        gap: 9px;
+        padding: 16px 10px;
+        margin-top: 14px;
+        margin-bottom: 24px;
+      }
+
+      .frammento {
+        width: 44px;
+        height: 62px;
+        border-radius: 7px 7px 12px 12px;
+        font-size: 18px;
+      }
+
+      .frammento::before {
+        inset: 6px;
+      }
+
+      .frammento::after {
+        top: 7px;
+        font-size: 14px;
+      }
+
+      .frammento span {
+        margin-top: 15px;
       }
 
       .istruzione {
-        font-size: 21px;
+        font-size: 20px;
+        line-height: 1.35;
       }
 
       input {
-        font-size: 19px;
+        font-size: 18px;
+        padding: 15px 14px;
       }
 
       button {
         width: 100%;
-        padding-left: 18px;
-        padding-right: 18px;
+        padding: 13px 18px;
+        font-size: 20px;
+      }
+
+      #messaggio {
+        font-size: 19px;
+        min-height: 70px;
+        margin-top: 28px;
       }
 
       .messaggio-ok {
         flex-direction: column;
         text-align: center;
+        gap: 12px;
+      }
+
+      .icona-messaggio {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        font-size: 27px;
+      }
+
+      .testo-messaggio strong {
+        font-size: 22px;
+      }
+
+      .testo-messaggio em {
+        font-size: 18px;
+      }
+
+      .frase-finale {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      h1 {
+        font-size: 39px;
+      }
+
+      .frammento {
+        width: 39px;
+        height: 58px;
+        font-size: 17px;
+      }
+
+      .frammenti {
+        gap: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .istruzione {
+        font-size: 19px;
       }
     }
   </style>
@@ -422,7 +535,7 @@
       <p class="testo-intro">
         Ho tentato di fermare il tempo.<br>
         Per evitare il compimento dei 30 anni,<br>
-        ho diviso la mia anima in sette frammenti.
+        ho diviso la mia essenza in sette frammenti.
       </p>
 
       <div class="label-frammenti">
@@ -430,13 +543,13 @@
       </div>
 
       <div class="frammenti">
-        <div class="sigillo" id="f1"><span>1</span></div>
-        <div class="sigillo" id="f2"><span>2</span></div>
-        <div class="sigillo" id="f3"><span>3</span></div>
-        <div class="sigillo" id="f4"><span>4</span></div>
-        <div class="sigillo" id="f5"><span>5</span></div>
-        <div class="sigillo" id="f6"><span>6</span></div>
-        <div class="sigillo" id="f7"><span>7</span></div>
+        <div class="frammento" id="f1"><span>1</span></div>
+        <div class="frammento" id="f2"><span>2</span></div>
+        <div class="frammento" id="f3"><span>3</span></div>
+        <div class="frammento" id="f4"><span>4</span></div>
+        <div class="frammento" id="f5"><span>5</span></div>
+        <div class="frammento" id="f6"><span>6</span></div>
+        <div class="frammento" id="f7"><span>7</span></div>
       </div>
 
       <div class="separatore"></div>
@@ -481,7 +594,7 @@
       <div class="separatore"></div>
 
       <p class="testo-intro">
-        I sette frammenti sono stati recuperati.<br><br>
+        I sette frammenti sono tornati al loro posto.<br><br>
         Il tempo può finalmente riprendere il suo corso.
       </p>
 
@@ -493,7 +606,7 @@
 
       <p class="frase-finale">
         Il grimorio si chiude.<br>
-        Ma la leggenda resta incisa nella cera e nell’oro.
+        Ma la leggenda resta incisa nella pietra e nell’oro.
       </p>
 
     </div>
@@ -505,37 +618,37 @@
     const frammenti = [
       {
         parola: "nascita",
-        titolo: "Primo frammento ritrovato.",
+        titolo: "Primo frammento recuperato.",
         testo: "Il primo frammento è tornato al suo posto."
       },
       {
         parola: "tempo",
-        titolo: "Secondo frammento ritrovato.",
+        titolo: "Secondo frammento recuperato.",
         testo: "Il tempo ricomincia lentamente a scorrere."
       },
       {
         parola: "ricordo",
-        titolo: "Terzo frammento ritrovato.",
+        titolo: "Terzo frammento recuperato.",
         testo: "Un ricordo perduto riaffiora dalle pagine del grimorio."
       },
       {
         parola: "ombra",
-        titolo: "Quarto frammento ritrovato.",
+        titolo: "Quarto frammento recuperato.",
         testo: "L’ombra arretra, ma non scompare del tutto."
       },
       {
         parola: "coraggio",
-        titolo: "Quinto frammento ritrovato.",
+        titolo: "Quinto frammento recuperato.",
         testo: "Una fiamma antica si riaccende nel buio."
       },
       {
         parola: "sogno",
-        titolo: "Sesto frammento ritrovato.",
+        titolo: "Sesto frammento recuperato.",
         testo: "Il sogno ritrova la via tra le pieghe del tempo."
       },
       {
         parola: "anima",
-        titolo: "Settimo frammento ritrovato.",
+        titolo: "Settimo frammento recuperato.",
         testo: "L’anima è completa. Il rito è compiuto."
       }
     ];
@@ -558,7 +671,7 @@
 
         messaggio.innerHTML =
           '<div class="messaggio-ok">' +
-            '<div class="icona-messaggio">✶</div>' +
+            '<div class="icona-messaggio">ᛟ</div>' +
             '<div class="testo-messaggio">' +
               '<strong>' + frammenti[livello - 1].titolo + '</strong>' +
               '<em>' + frammenti[livello - 1].testo + '</em>' +
@@ -582,7 +695,7 @@
         const errori = [
           "Il grimorio non riconosce questa parola.",
           "Le rune rimangono mute. Riprova.",
-          "Il codice non è corretto.",
+          "Il frammento resta immobile. La password non è corretta.",
           "Un sussurro si perde nel buio: codice errato."
         ];
 
@@ -605,3 +718,28 @@
 </body>
 
 </html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Grimorio dei Frammenti</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #d8bd7a;
+
+      background:
