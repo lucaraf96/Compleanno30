@@ -9,7 +9,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Il Grimorio è stato sbloccato</title>
+  <title>Il Grimorio di Luca</title>
 
   <style>
     * {
@@ -30,34 +30,37 @@
       align-items: center;
       padding: 24px;
 
-      color: #d8bd7a;
       font-family: Georgia, "Times New Roman", serif;
+      color: #d8bd7a;
 
       background:
         radial-gradient(
-          circle at 50% 22%,
-          rgba(216, 165, 73, 0.30) 0%,
-          rgba(131, 82, 29, 0.14) 24%,
-          transparent 48%
+          circle at 82% 12%,
+          rgba(214, 129, 36, 0.34) 0%,
+          rgba(214, 129, 36, 0.08) 12%,
+          transparent 26%
         ),
         radial-gradient(
-          circle at 85% 12%,
-          rgba(214, 129, 36, 0.24) 0%,
-          transparent 27%
+          circle at 20% 18%,
+          rgba(120, 72, 25, 0.24) 0%,
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(117, 78, 35, 0.22) 0%,
+          transparent 47%
         ),
         linear-gradient(
           90deg,
-          #030302 0%,
-          #130d08 30%,
+          #050403 0%,
+          #16100b 28%,
           #21170f 50%,
-          #130d08 70%,
+          #130d09 72%,
           #030302 100%
         );
-
-      overflow-x: hidden;
     }
 
-    .pagina-finale {
+    .grimorio {
       position: relative;
       width: 760px;
       max-width: 94vw;
@@ -66,8 +69,8 @@
 
       background:
         linear-gradient(
-          rgba(31, 25, 17, 0.96),
-          rgba(11, 9, 7, 0.98)
+          rgba(30, 25, 18, 0.96),
+          rgba(12, 10, 8, 0.98)
         ),
         repeating-linear-gradient(
           45deg,
@@ -77,22 +80,19 @@
           transparent 8px
         );
 
-      border: 2px solid rgba(195, 144, 65, 0.86);
+      border: 2px solid rgba(176, 124, 50, 0.78);
       border-radius: 10px;
 
       box-shadow:
-        0 0 55px rgba(0, 0, 0, 0.94),
-        0 0 45px rgba(180, 119, 39, 0.15),
-        inset 0 0 50px rgba(0, 0, 0, 0.76),
-        inset 0 0 24px rgba(199, 147, 67, 0.19);
-
-      animation: comparsa 1.4s ease-out;
+        0 0 45px rgba(0, 0, 0, 0.92),
+        inset 0 0 45px rgba(0, 0, 0, 0.78),
+        inset 0 0 20px rgba(184, 128, 55, 0.18);
     }
 
     .cornice {
       position: relative;
-      padding: 42px 34px 34px;
-      border: 1px solid rgba(183, 132, 57, 0.55);
+      padding: 34px 34px 28px;
+      border: 1px solid rgba(171, 119, 48, 0.5);
     }
 
     .cornice::before,
@@ -100,127 +100,107 @@
       content: "✦";
       position: absolute;
       left: 50%;
-      padding: 0 12px;
+      padding: 0 10px;
 
-      color: #bd8d44;
+      color: #a37739;
       background: #17120d;
-      font-size: 20px;
 
+      font-size: 18px;
       transform: translateX(-50%);
     }
 
     .cornice::before {
-      top: -13px;
+      top: -12px;
     }
 
     .cornice::after {
-      bottom: -13px;
+      bottom: -12px;
     }
 
     .ornamento {
-      margin-bottom: 24px;
-
-      color: #b48642;
-      font-size: 20px;
-      letter-spacing: 10px;
-
-      animation: luce 2.5s ease-in-out infinite alternate;
-    }
-
-    .simbolo-finale {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 104px;
-      height: 104px;
-      margin: 0 auto 28px;
-
-      color: #f0cc7c;
-      background:
-        radial-gradient(
-          circle,
-          #762016 0%,
-          #3f0b07 47%,
-          #110504 72%,
-          #050403 100%
-        );
-
-      border: 2px solid #c99a45;
-      border-radius: 50%;
-
-      font-size: 50px;
-
-      box-shadow:
-        inset 0 0 22px rgba(255, 207, 107, 0.20),
-        0 0 0 5px rgba(123, 82, 31, 0.40),
-        0 0 35px rgba(205, 148, 55, 0.48);
-
-      animation: simbolo 2.4s ease-in-out infinite alternate;
+      margin-bottom: 18px;
+      color: #9f763e;
+      font-size: 18px;
+      letter-spacing: 8px;
     }
 
     h1 {
       margin: 0;
 
-      color: #d2a652;
-      font-size: clamp(42px, 8vw, 72px);
+      color: #c99a45;
+      font-size: clamp(42px, 7vw, 72px);
       font-weight: normal;
-      line-height: 0.98;
+      line-height: 0.95;
       letter-spacing: 1px;
 
       text-shadow:
-        0 0 12px rgba(222, 170, 74, 0.38),
-        0 3px 0 rgba(0, 0, 0, 0.88);
+        0 0 8px rgba(222, 170, 74, 0.35),
+        0 3px 0 rgba(0, 0, 0, 0.85);
     }
 
     .sottotitolo {
-      margin-top: 18px;
-
-      color: #d1b77e;
+      margin-top: 14px;
+      color: #cbb27c;
       font-size: 24px;
-      line-height: 1.4;
+    }
+
+    .testo-intro {
+      max-width: 590px;
+      margin: 28px auto 22px;
+
+      color: #bca474;
+      font-size: 19px;
+      line-height: 1.55;
     }
 
     .separatore {
       width: 82%;
       height: 1px;
-      margin: 30px auto;
+      margin: 28px auto;
 
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(199, 146, 61, 0.90),
+          rgba(185, 128, 45, 0.85),
           transparent
         );
     }
 
-    .messaggio {
-      max-width: 590px;
-      margin: 0 auto;
-
-      color: #c4ab76;
-      font-size: 21px;
-      line-height: 1.65;
-    }
-
-    .messaggio strong {
-      display: block;
+    .label-frammenti {
       margin-bottom: 14px;
-      color: #e2c17a;
-      font-size: 26px;
-      font-weight: normal;
+
+      color: #c99542;
+      font-size: 17px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
 
-    .frammenti-completi {
+    .frammenti {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
 
-      max-width: 560px;
-      margin: 30px auto;
+      max-width: 610px;
+      margin: 16px auto 28px;
+      padding: 20px 18px;
+
+      border: 1px solid rgba(169, 115, 42, 0.55);
+      border-radius: 8px;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.28),
+          rgba(0, 0, 0, 0.18)
+        );
+
+      box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.55),
+        0 0 10px rgba(0, 0, 0, 0.35);
     }
+
+    /* Tavolette verticali dei frammenti */
 
     .frammento {
       position: relative;
@@ -229,104 +209,184 @@
       align-items: center;
       justify-content: center;
 
-      width: 54px;
-      height: 70px;
+      width: 62px;
+      height: 78px;
 
-      color: #f1d18a;
+      color: #7f6840;
+
       background:
         linear-gradient(
           145deg,
-          #742018 0%,
-          #400a07 50%,
-          #120504 100%
+          #21190f 0%,
+          #0d0a07 58%,
+          #050403 100%
         );
 
-      border: 1px solid #d0a052;
+      border: 1px solid rgba(139, 101, 49, 0.8);
       border-radius: 8px 8px 14px 14px;
 
-      font-size: 21px;
+      font-size: 24px;
+      font-weight: normal;
 
       box-shadow:
-        inset 0 0 16px rgba(255, 197, 89, 0.17),
-        0 0 0 2px rgba(143, 92, 32, 0.68),
-        0 0 18px rgba(205, 143, 47, 0.40);
+        inset 0 0 18px rgba(0, 0, 0, 0.92),
+        inset 0 0 4px rgba(201, 150, 74, 0.18),
+        0 0 0 2px rgba(63, 43, 20, 0.55),
+        0 8px 18px rgba(0, 0, 0, 0.65);
 
-      animation: frammento 0.8s ease-out both;
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        background 0.35s ease;
     }
 
     .frammento::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+
+      border: 1px solid rgba(132, 96, 48, 0.42);
+      border-radius: 5px 5px 10px 10px;
+
+      pointer-events: none;
+    }
+
+    .frammento::after {
       content: "ᛟ";
       position: absolute;
-      top: 7px;
+      top: 9px;
 
-      color: rgba(255, 218, 128, 0.62);
-      font-size: 15px;
+      color: rgba(125, 95, 52, 0.36);
+      font-size: 18px;
 
-      text-shadow:
-        0 0 9px rgba(255, 194, 80, 0.70);
+      pointer-events: none;
     }
 
     .frammento span {
-      margin-top: 17px;
+      position: relative;
+      z-index: 2;
+
+      margin-top: 18px;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.85);
     }
 
-    .frammento:nth-child(1) {
-      animation-delay: 0.15s;
-    }
+    /* Aspetto di un frammento recuperato */
 
-    .frammento:nth-child(2) {
-      animation-delay: 0.25s;
-    }
+    .frammento.attivo {
+      color: #f3d38f;
 
-    .frammento:nth-child(3) {
-      animation-delay: 0.35s;
-    }
-
-    .frammento:nth-child(4) {
-      animation-delay: 0.45s;
-    }
-
-    .frammento:nth-child(5) {
-      animation-delay: 0.55s;
-    }
-
-    .frammento:nth-child(6) {
-      animation-delay: 0.65s;
-    }
-
-    .frammento:nth-child(7) {
-      animation-delay: 0.75s;
-    }
-
-    .frase-conclusiva {
-      margin-top: 24px;
-
-      color: rgba(213, 191, 144, 0.76);
-      font-size: 20px;
-      font-style: italic;
-      line-height: 1.55;
-    }
-
-    .pulsante-indietro {
-      display: inline-block;
-      margin-top: 27px;
-      padding: 13px 28px;
-
-      color: #ebcf91;
       background:
-        linear-gradient(#342315, #17100b);
+        linear-gradient(
+          145deg,
+          #6f1610 0%,
+          #3f0805 48%,
+          #100503 100%
+        );
 
-      border: 1px solid rgba(201, 151, 69, 0.78);
+      border-color: #d0a052;
+
+      box-shadow:
+        inset 0 0 18px rgba(255, 197, 89, 0.16),
+        inset 0 0 4px rgba(255, 218, 137, 0.28),
+        0 0 0 2px rgba(143, 92, 32, 0.72),
+        0 0 22px rgba(205, 143, 47, 0.55),
+        0 8px 20px rgba(0, 0, 0, 0.72);
+
+      transform: translateY(-4px);
+    }
+
+    .frammento.attivo::before {
+      border-color: rgba(240, 190, 95, 0.68);
+
+      box-shadow:
+        inset 0 0 12px rgba(255, 195, 82, 0.16);
+    }
+
+    .frammento.attivo::after {
+      content: "ᛟ";
+
+      color: rgba(255, 218, 128, 0.68);
+
+      text-shadow:
+        0 0 10px rgba(255, 194, 80, 0.75);
+    }
+
+    .istruzione {
+      margin-top: 28px;
+      margin-bottom: 18px;
+
+      color: #d2b779;
+      font-size: 25px;
+    }
+
+    .numero-frammento {
+      color: inherit;
+      text-shadow: none;
+    }
+
+    input {
+      width: min(100%, 520px);
+      padding: 17px 20px;
+
+      color: #ddc38a;
+      background: #090806;
+
+      border: 1px solid rgba(201, 143, 55, 0.85);
+      border-radius: 8px;
+      outline: none;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-style: italic;
+      text-align: center;
+
+      box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.88),
+        0 0 14px rgba(0, 0, 0, 0.6);
+    }
+
+    input::placeholder {
+      color: rgba(210, 190, 145, 0.45);
+    }
+
+    input:focus {
+      border-color: #d9a94c;
+
+      box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.88),
+        0 0 22px rgba(199, 142, 49, 0.38);
+    }
+
+    input:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    button {
+      margin-top: 22px;
+      padding: 13px 50px;
+
+      color: #f2d899;
+
+      background:
+        linear-gradient(#962016, #500805);
+
+      border: 1px solid #d3a14a;
       border-radius: 7px;
 
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 17px;
-      letter-spacing: 1px;
-      text-decoration: none;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      cursor: pointer;
 
       box-shadow:
-        inset 0 0 12px rgba(255, 204, 106, 0.08),
-        0 6px 16px rgba(0, 0, 0, 0.55);
+        inset 0 0 12px rgba(255, 200, 87, 0.18),
+        0 0 0 3px rgba(82, 47, 15, 0.55),
+        0 0 18px rgba(0, 0, 0, 0.75);
 
       transition:
         transform 0.25s ease,
@@ -334,80 +394,102 @@
         box-shadow 0.25s ease;
     }
 
-    .pulsante-indietro:hover,
-    .pulsante-indietro:focus-visible {
+    button:hover,
+    button:focus-visible {
       background:
-        linear-gradient(#4a3019, #21150d);
+        linear-gradient(#b32619, #6a0c07);
 
       transform: translateY(-2px);
 
       box-shadow:
-        inset 0 0 12px rgba(255, 204, 106, 0.12),
-        0 8px 20px rgba(0, 0, 0, 0.62);
+        inset 0 0 14px rgba(255, 213, 120, 0.23),
+        0 0 0 3px rgba(119, 75, 24, 0.65),
+        0 0 24px rgba(174, 81, 31, 0.35);
     }
 
-    @keyframes comparsa {
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.98);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    button:disabled {
+      opacity: 0.55;
+      cursor: default;
+      transform: none;
     }
 
-    @keyframes luce {
-      from {
-        opacity: 0.62;
-        text-shadow: 0 0 4px rgba(212, 158, 64, 0.20);
-      }
+    #messaggio {
+      max-width: 550px;
+      min-height: 80px;
+      margin: 34px auto 0;
 
-      to {
-        opacity: 1;
-        text-shadow: 0 0 14px rgba(212, 158, 64, 0.62);
-      }
+      color: #e1c58b;
+      font-size: 22px;
+      line-height: 1.45;
     }
 
-    @keyframes simbolo {
-      from {
-        transform: scale(1);
-        box-shadow:
-          inset 0 0 22px rgba(255, 207, 107, 0.20),
-          0 0 0 5px rgba(123, 82, 31, 0.40),
-          0 0 25px rgba(205, 148, 55, 0.36);
-      }
+    .messaggio-ok {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
 
-      to {
-        transform: scale(1.04);
-        box-shadow:
-          inset 0 0 25px rgba(255, 207, 107, 0.25),
-          0 0 0 5px rgba(123, 82, 31, 0.50),
-          0 0 45px rgba(205, 148, 55, 0.62);
-      }
+      text-align: left;
     }
 
-    @keyframes frammento {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
+    .icona-messaggio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      width: 64px;
+      min-width: 64px;
+      height: 64px;
+
+      color: #e4bb5f;
+
+      background:
+        radial-gradient(
+          circle,
+          #54100b 0%,
+          #170605 68%,
+          #050403 100%
+        );
+
+      border: 1px solid rgba(215, 165, 75, 0.85);
+      border-radius: 50%;
+
+      font-size: 31px;
+
+      box-shadow:
+        inset 0 0 13px rgba(255, 190, 70, 0.18),
+        0 0 18px rgba(158, 87, 28, 0.32);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .pagina-finale,
-      .ornamento,
-      .simbolo-finale,
-      .frammento {
-        animation: none;
-      }
+    .testo-messaggio strong {
+      display: block;
+      margin-bottom: 4px;
+
+      color: #e2b765;
+      font-size: 25px;
+      font-weight: normal;
     }
+
+    .testo-messaggio em {
+      color: #c8af7b;
+      font-size: 20px;
+    }
+
+    .errore {
+      color: #d19a77;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .frase-finale {
+      margin-top: 8px;
+
+      color: rgba(194, 174, 131, 0.66);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    /* Ottimizzazione per smartphone */
 
     @media (max-width: 620px) {
       body {
@@ -415,88 +497,153 @@
         padding: 14px;
       }
 
-      .pagina-finale {
+      .grimorio {
         width: 100%;
         max-width: 100%;
         padding: 22px 16px;
       }
 
       .cornice {
-        padding: 34px 14px 26px;
+        padding: 28px 14px 24px;
       }
 
-      .simbolo-finale {
-        width: 86px;
-        height: 86px;
-        margin-bottom: 25px;
-        font-size: 42px;
+      .ornamento {
+        font-size: 16px;
+        letter-spacing: 6px;
       }
 
       h1 {
-        font-size: 44px;
+        font-size: 45px;
+        line-height: 0.98;
       }
 
       .sottotitolo {
         font-size: 19px;
+        line-height: 1.35;
       }
 
-      .messaggio {
-        font-size: 17px;
-        line-height: 1.55;
+      .testo-intro {
+        margin-top: 24px;
+        font-size: 16px;
+        line-height: 1.5;
       }
 
-      .messaggio strong {
-        font-size: 22px;
+      .label-frammenti {
+        font-size: 14px;
+        letter-spacing: 2px;
       }
 
       /*
-        Quattro frammenti nella prima riga
-        e tre frammenti nella seconda.
+        La larghezza del contenitore determina
+        la disposizione 4 + 3 su telefono.
       */
 
-      .frammenti-completi {
-        max-width: 218px;
-        gap: 8px;
+      .frammenti {
+        max-width: 226px;
+        margin: 14px auto 24px;
+        padding: 16px 10px;
+
+        gap: 9px;
+        justify-content: center;
       }
 
       .frammento {
-        width: 43px;
-        height: 59px;
-        font-size: 17px;
+        width: 44px;
+        height: 62px;
+
+        border-radius: 7px 7px 12px 12px;
+        font-size: 18px;
       }
 
       .frammento::before {
-        top: 6px;
-        font-size: 13px;
+        inset: 6px;
+      }
+
+      .frammento::after {
+        top: 7px;
+        font-size: 14px;
       }
 
       .frammento span {
-        margin-top: 14px;
+        margin-top: 15px;
       }
 
-      .frase-conclusiva {
-        font-size: 17px;
+      .istruzione {
+        font-size: 20px;
+        line-height: 1.35;
       }
 
-      .pulsante-indietro {
+      input {
+        padding: 15px 14px;
+        font-size: 18px;
+      }
+
+      button {
         width: 100%;
-        padding: 13px 16px;
+        padding: 13px 18px;
+        font-size: 20px;
+      }
+
+      #messaggio {
+        min-height: 70px;
+        margin-top: 28px;
+        font-size: 19px;
+      }
+
+      .messaggio-ok {
+        flex-direction: column;
+        gap: 12px;
+
+        text-align: center;
+      }
+
+      .icona-messaggio {
+        width: 56px;
+        min-width: 56px;
+        height: 56px;
+
+        font-size: 27px;
+      }
+
+      .testo-messaggio strong {
+        font-size: 22px;
+      }
+
+      .testo-messaggio em {
+        font-size: 18px;
+      }
+
+      .frase-finale {
+        font-size: 18px;
       }
     }
+
+    /* Ottimizzazione per schermi molto piccoli */
 
     @media (max-width: 390px) {
       h1 {
         font-size: 39px;
       }
 
-      .frammenti-completi {
-        max-width: 198px;
-        gap: 7px;
+      .frammenti {
+        max-width: 196px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 8px;
+        padding-left: 8px;
+
+        gap: 8px;
+        justify-content: center;
       }
 
       .frammento {
-        width: 40px;
-        height: 57px;
+        width: 39px;
+        height: 58px;
+        font-size: 17px;
+      }
+
+      .istruzione {
+        font-size: 19px;
       }
     }
   </style>
@@ -504,64 +651,305 @@
 
 <body>
 
-  <main class="pagina-finale">
+  <main class="grimorio">
     <div class="cornice">
 
       <div class="ornamento" aria-hidden="true">
         ✦ ✧ ✦
       </div>
 
-      <div class="simbolo-finale" aria-hidden="true">
-        ᛟ
-      </div>
-
       <h1>
-        Grimorio<br>
-        Sbloccato
+        Il Grimorio<br>
+        di Luca
       </h1>
 
       <div class="sottotitolo">
-        I sette frammenti sono stati messi in ordine
+        La ricerca dei 7 frammenti
       </div>
 
       <div class="separatore"></div>
 
-      <div class="messaggio">
-        <strong>Il tempo ha rivelato la verità.</strong>
+      <p class="testo-intro">
+        Il tempo è nelle mie mani.<br>
+        Metti in fila i frammenti nel modo corretto<br>
+        per sbloccare il Grimorio.
+      </p>
 
-        Anima, paura, vita, logica, viaggio,
-        fortuna e legame sono tornati al loro posto.
-        <br><br>
-
-        Il Grimorio di Luca è finalmente aperto.
+      <div class="label-frammenti">
+        Frammenti recuperati
       </div>
 
       <div
-        class="frammenti-completi"
-        aria-label="Tutti i frammenti recuperati"
+        class="frammenti"
+        aria-label="Stato dei sette frammenti"
       >
-        <div class="frammento"><span>1</span></div>
-        <div class="frammento"><span>2</span></div>
-        <div class="frammento"><span>3</span></div>
-        <div class="frammento"><span>4</span></div>
-        <div class="frammento"><span>5</span></div>
-        <div class="frammento"><span>6</span></div>
-        <div class="frammento"><span>7</span></div>
+        <div class="frammento" id="f1">
+          <span>1</span>
+        </div>
+
+        <div class="frammento" id="f2">
+          <span>2</span>
+        </div>
+
+        <div class="frammento" id="f3">
+          <span>3</span>
+        </div>
+
+        <div class="frammento" id="f4">
+          <span>4</span>
+        </div>
+
+        <div class="frammento" id="f5">
+          <span>5</span>
+        </div>
+
+        <div class="frammento" id="f6">
+          <span>6</span>
+        </div>
+
+        <div class="frammento" id="f7">
+          <span>7</span>
+        </div>
       </div>
 
       <div class="separatore"></div>
 
-      <p class="frase-conclusiva">
-        “Il Grimorio si apre.<br>
-        La storia può finalmente continuare.”
+      <p id="istruzione" class="istruzione">
+        Il grimorio attende il codice del frammento
+        <span class="numero-frammento">1</span>:
       </p>
 
-      index.html
-        Ricomincia
-      </a>
+      <input
+        id="codice"
+        type="text"
+        placeholder="Inserisci la parola"
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+        aria-label="Parola del frammento"
+      >
+
+      <br>
+
+      <button
+        id="pulsanteSblocca"
+        type="button"
+        onclick="sblocca()"
+      >
+        Sblocca
+      </button>
+
+      <div
+        id="messaggio"
+        aria-live="polite"
+      ></div>
+
+      <div class="separatore"></div>
+
+      <p class="frase-finale">
+        “Sette frammenti. Un solo ordine.<br>
+        Il tempo rivelerà la verità.”
+      </p>
 
     </div>
   </main>
+
+  <script>
+    /*
+      Indica il frammento che deve essere inserito.
+      Il valore iniziale 0 corrisponde al primo elemento
+      dell'elenco delle parole.
+    */
+
+    let livello = 0;
+
+    /*
+      Parole da inserire, rigorosamente in questo ordine.
+    */
+
+    const frammenti = [
+      {
+        parola: "anima",
+        titolo: "Primo frammento recuperato.",
+        testo: "L’anima ha trovato il proprio posto."
+      },
+      {
+        parola: "paura",
+        titolo: "Secondo frammento recuperato.",
+        testo: "La paura emerge dall’ombra e si lascia riconoscere."
+      },
+      {
+        parola: "vita",
+        titolo: "Terzo frammento recuperato.",
+        testo: "La vita torna a scorrere tra le pagine del grimorio."
+      },
+      {
+        parola: "logica",
+        titolo: "Quarto frammento recuperato.",
+        testo: "La logica rivela l’ordine nascosto."
+      },
+      {
+        parola: "viaggio",
+        titolo: "Quinto frammento recuperato.",
+        testo: "Il viaggio prosegue oltre ciò che è conosciuto."
+      },
+      {
+        parola: "fortuna",
+        titolo: "Sesto frammento recuperato.",
+        testo: "La fortuna lascia il proprio segno sul cammino."
+      },
+      {
+        parola: "legame",
+        titolo: "Settimo frammento recuperato.",
+        testo: "Il legame con l'altro è ciò che ci rende umani."
+      }
+    ];
+
+    function sblocca() {
+      /*
+        Se tutti i frammenti sono già stati recuperati,
+        la funzione viene interrotta.
+      */
+
+      if (livello >= frammenti.length) {
+        return;
+      }
+
+      const campoCodice =
+        document.getElementById("codice");
+
+      const messaggio =
+        document.getElementById("messaggio");
+
+      const istruzione =
+        document.getElementById("istruzione");
+
+      /*
+        trim() elimina eventuali spazi prima e dopo.
+        toLocaleLowerCase() rende irrilevanti
+        maiuscole e minuscole.
+      */
+
+      const input = campoCodice.value
+        .trim()
+        .toLocaleLowerCase("it-IT");
+
+      /*
+        Verifica che la parola inserita corrisponda
+        a quella richiesta in quel momento.
+      */
+
+      if (input === frammenti[livello].parola) {
+        livello++;
+
+        const frammentoRecuperato =
+          document.getElementById("f" + livello);
+
+        frammentoRecuperato.classList.add("attivo");
+
+        messaggio.innerHTML =
+          '<div class="messaggio-ok">' +
+            '<div class="icona-messaggio">ᛟ</div>' +
+            '<div class="testo-messaggio">' +
+              '<strong>' +
+                frammenti[livello - 1].titolo +
+              '</strong>' +
+              '<em>' +
+                frammenti[livello - 1].testo +
+              '</em>' +
+            '</div>' +
+          '</div>';
+
+        campoCodice.value = "";
+
+        /*
+          Se restano altri frammenti,
+          viene richiesto il successivo.
+        */
+
+        if (livello < frammenti.length) {
+          istruzione.innerHTML =
+            'Il grimorio attende il codice del frammento ' +
+            '<span class="numero-frammento">' +
+              (livello + 1) +
+            '</span>:';
+
+          campoCodice.focus();
+        } else {
+          /*
+            Tutti i frammenti sono stati recuperati.
+            Il campo e il pulsante vengono disabilitati.
+          */
+
+          istruzione.innerHTML =
+            "Tutti i frammenti sono stati recuperati.";
+
+          campoCodice.disabled = true;
+
+          document
+            .getElementById("pulsanteSblocca")
+            .disabled = true;
+
+          /*
+            Questa informazione verrà controllata
+            dalla futura pagina finale.html.
+          */
+
+          sessionStorage.setItem(
+            "grimorioSbloccato",
+            "true"
+          );
+
+          /*
+            Dopo 1,8 secondi viene aperta
+            la pagina finale.html.
+          */
+
+          setTimeout(function () {
+            window.location.href = "finale.html";
+          }, 1800);
+        }
+      } else {
+        /*
+          Messaggi mostrati quando la parola
+          è sbagliata o inserita fuori ordine.
+        */
+
+        const errori = [
+          "Il grimorio non riconosce questa parola.",
+          "Le rune rimangono mute. Riprova.",
+          "Il frammento resta immobile. La parola non è corretta.",
+          "Un sussurro si perde nel buio: ordine errato."
+        ];
+
+        const erroreCasuale =
+          errori[
+            Math.floor(Math.random() * errori.length)
+          ];
+
+        messaggio.innerHTML =
+          '<div class="errore">' +
+            erroreCasuale +
+          '</div>';
+
+        campoCodice.value = "";
+        campoCodice.focus();
+      }
+    }
+
+    /*
+      Permette di confermare la parola
+      premendo Invio sulla tastiera.
+    */
+
+    document
+      .getElementById("codice")
+      .addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          sblocca();
+        }
+      });
+  </script>
 
 </body>
 
