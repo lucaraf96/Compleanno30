@@ -3,9 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Il Grimorio di Luca</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Il Grimorio è stato sbloccato</title>
 
   <style>
     * {
@@ -26,37 +30,34 @@
       align-items: center;
       padding: 24px;
 
-      font-family: Georgia, "Times New Roman", serif;
       color: #d8bd7a;
+      font-family: Georgia, "Times New Roman", serif;
 
       background:
         radial-gradient(
-          circle at 82% 12%,
-          rgba(214, 129, 36, 0.34) 0%,
-          rgba(214, 129, 36, 0.08) 12%,
-          transparent 26%
+          circle at 50% 22%,
+          rgba(216, 165, 73, 0.30) 0%,
+          rgba(131, 82, 29, 0.14) 24%,
+          transparent 48%
         ),
         radial-gradient(
-          circle at 20% 18%,
-          rgba(120, 72, 25, 0.24) 0%,
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(117, 78, 35, 0.22) 0%,
-          transparent 47%
+          circle at 85% 12%,
+          rgba(214, 129, 36, 0.24) 0%,
+          transparent 27%
         ),
         linear-gradient(
           90deg,
-          #050403 0%,
-          #16100b 28%,
+          #030302 0%,
+          #130d08 30%,
           #21170f 50%,
-          #130d09 72%,
+          #130d08 70%,
           #030302 100%
         );
+
+      overflow-x: hidden;
     }
 
-    .grimorio {
+    .pagina-finale {
       position: relative;
       width: 760px;
       max-width: 94vw;
@@ -65,8 +66,8 @@
 
       background:
         linear-gradient(
-          rgba(30, 25, 18, 0.96),
-          rgba(12, 10, 8, 0.98)
+          rgba(31, 25, 17, 0.96),
+          rgba(11, 9, 7, 0.98)
         ),
         repeating-linear-gradient(
           45deg,
@@ -76,19 +77,22 @@
           transparent 8px
         );
 
-      border: 2px solid rgba(176, 124, 50, 0.78);
+      border: 2px solid rgba(195, 144, 65, 0.86);
       border-radius: 10px;
 
       box-shadow:
-        0 0 45px rgba(0, 0, 0, 0.92),
-        inset 0 0 45px rgba(0, 0, 0, 0.78),
-        inset 0 0 20px rgba(184, 128, 55, 0.18);
+        0 0 55px rgba(0, 0, 0, 0.94),
+        0 0 45px rgba(180, 119, 39, 0.15),
+        inset 0 0 50px rgba(0, 0, 0, 0.76),
+        inset 0 0 24px rgba(199, 147, 67, 0.19);
+
+      animation: comparsa 1.4s ease-out;
     }
 
     .cornice {
       position: relative;
-      padding: 34px 34px 28px;
-      border: 1px solid rgba(171, 119, 48, 0.5);
+      padding: 42px 34px 34px;
+      border: 1px solid rgba(183, 132, 57, 0.55);
     }
 
     .cornice::before,
@@ -96,39 +100,469 @@
       content: "✦";
       position: absolute;
       left: 50%;
-      padding: 0 10px;
+      padding: 0 12px;
 
-      color: #a37739;
+      color: #bd8d44;
       background: #17120d;
+      font-size: 20px;
 
-      font-size: 18px;
       transform: translateX(-50%);
     }
 
     .cornice::before {
-      top: -12px;
+      top: -13px;
     }
 
     .cornice::after {
-      bottom: -12px;
+      bottom: -13px;
     }
 
     .ornamento {
-      margin-bottom: 18px;
-      color: #9f763e;
-      font-size: 18px;
-      letter-spacing: 8px;
+      margin-bottom: 24px;
+
+      color: #b48642;
+      font-size: 20px;
+      letter-spacing: 10px;
+
+      animation: luce 2.5s ease-in-out infinite alternate;
+    }
+
+    .simbolo-finale {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 104px;
+      height: 104px;
+      margin: 0 auto 28px;
+
+      color: #f0cc7c;
+      background:
+        radial-gradient(
+          circle,
+          #762016 0%,
+          #3f0b07 47%,
+          #110504 72%,
+          #050403 100%
+        );
+
+      border: 2px solid #c99a45;
+      border-radius: 50%;
+
+      font-size: 50px;
+
+      box-shadow:
+        inset 0 0 22px rgba(255, 207, 107, 0.20),
+        0 0 0 5px rgba(123, 82, 31, 0.40),
+        0 0 35px rgba(205, 148, 55, 0.48);
+
+      animation: simbolo 2.4s ease-in-out infinite alternate;
     }
 
     h1 {
       margin: 0;
 
-      color: #c99a45;
-      font-size: clamp(42px, 7vw, 72px);
+      color: #d2a652;
+      font-size: clamp(42px, 8vw, 72px);
       font-weight: normal;
-      line-height: 0.95;
+      line-height: 0.98;
       letter-spacing: 1px;
 
       text-shadow:
-        0 0 8px rgba(222, 170, 74, 0.35),
- 
+        0 0 12px rgba(222, 170, 74, 0.38),
+        0 3px 0 rgba(0, 0, 0, 0.88);
+    }
+
+    .sottotitolo {
+      margin-top: 18px;
+
+      color: #d1b77e;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    .separatore {
+      width: 82%;
+      height: 1px;
+      margin: 30px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(199, 146, 61, 0.90),
+          transparent
+        );
+    }
+
+    .messaggio {
+      max-width: 590px;
+      margin: 0 auto;
+
+      color: #c4ab76;
+      font-size: 21px;
+      line-height: 1.65;
+    }
+
+    .messaggio strong {
+      display: block;
+      margin-bottom: 14px;
+      color: #e2c17a;
+      font-size: 26px;
+      font-weight: normal;
+    }
+
+    .frammenti-completi {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+
+      max-width: 560px;
+      margin: 30px auto;
+    }
+
+    .frammento {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 54px;
+      height: 70px;
+
+      color: #f1d18a;
+      background:
+        linear-gradient(
+          145deg,
+          #742018 0%,
+          #400a07 50%,
+          #120504 100%
+        );
+
+      border: 1px solid #d0a052;
+      border-radius: 8px 8px 14px 14px;
+
+      font-size: 21px;
+
+      box-shadow:
+        inset 0 0 16px rgba(255, 197, 89, 0.17),
+        0 0 0 2px rgba(143, 92, 32, 0.68),
+        0 0 18px rgba(205, 143, 47, 0.40);
+
+      animation: frammento 0.8s ease-out both;
+    }
+
+    .frammento::before {
+      content: "ᛟ";
+      position: absolute;
+      top: 7px;
+
+      color: rgba(255, 218, 128, 0.62);
+      font-size: 15px;
+
+      text-shadow:
+        0 0 9px rgba(255, 194, 80, 0.70);
+    }
+
+    .frammento span {
+      margin-top: 17px;
+    }
+
+    .frammento:nth-child(1) {
+      animation-delay: 0.15s;
+    }
+
+    .frammento:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .frammento:nth-child(3) {
+      animation-delay: 0.35s;
+    }
+
+    .frammento:nth-child(4) {
+      animation-delay: 0.45s;
+    }
+
+    .frammento:nth-child(5) {
+      animation-delay: 0.55s;
+    }
+
+    .frammento:nth-child(6) {
+      animation-delay: 0.65s;
+    }
+
+    .frammento:nth-child(7) {
+      animation-delay: 0.75s;
+    }
+
+    .frase-conclusiva {
+      margin-top: 24px;
+
+      color: rgba(213, 191, 144, 0.76);
+      font-size: 20px;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .pulsante-indietro {
+      display: inline-block;
+      margin-top: 27px;
+      padding: 13px 28px;
+
+      color: #ebcf91;
+      background:
+        linear-gradient(#342315, #17100b);
+
+      border: 1px solid rgba(201, 151, 69, 0.78);
+      border-radius: 7px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      letter-spacing: 1px;
+      text-decoration: none;
+
+      box-shadow:
+        inset 0 0 12px rgba(255, 204, 106, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.55);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pulsante-indietro:hover,
+    .pulsante-indietro:focus-visible {
+      background:
+        linear-gradient(#4a3019, #21150d);
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        inset 0 0 12px rgba(255, 204, 106, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.62);
+    }
+
+    @keyframes comparsa {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes luce {
+      from {
+        opacity: 0.62;
+        text-shadow: 0 0 4px rgba(212, 158, 64, 0.20);
+      }
+
+      to {
+        opacity: 1;
+        text-shadow: 0 0 14px rgba(212, 158, 64, 0.62);
+      }
+    }
+
+    @keyframes simbolo {
+      from {
+        transform: scale(1);
+        box-shadow:
+          inset 0 0 22px rgba(255, 207, 107, 0.20),
+          0 0 0 5px rgba(123, 82, 31, 0.40),
+          0 0 25px rgba(205, 148, 55, 0.36);
+      }
+
+      to {
+        transform: scale(1.04);
+        box-shadow:
+          inset 0 0 25px rgba(255, 207, 107, 0.25),
+          0 0 0 5px rgba(123, 82, 31, 0.50),
+          0 0 45px rgba(205, 148, 55, 0.62);
+      }
+    }
+
+    @keyframes frammento {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pagina-finale,
+      .ornamento,
+      .simbolo-finale,
+      .frammento {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        align-items: flex-start;
+        padding: 14px;
+      }
+
+      .pagina-finale {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 16px;
+      }
+
+      .cornice {
+        padding: 34px 14px 26px;
+      }
+
+      .simbolo-finale {
+        width: 86px;
+        height: 86px;
+        margin-bottom: 25px;
+        font-size: 42px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .sottotitolo {
+        font-size: 19px;
+      }
+
+      .messaggio {
+        font-size: 17px;
+        line-height: 1.55;
+      }
+
+      .messaggio strong {
+        font-size: 22px;
+      }
+
+      /*
+        Quattro frammenti nella prima riga
+        e tre frammenti nella seconda.
+      */
+
+      .frammenti-completi {
+        max-width: 218px;
+        gap: 8px;
+      }
+
+      .frammento {
+        width: 43px;
+        height: 59px;
+        font-size: 17px;
+      }
+
+      .frammento::before {
+        top: 6px;
+        font-size: 13px;
+      }
+
+      .frammento span {
+        margin-top: 14px;
+      }
+
+      .frase-conclusiva {
+        font-size: 17px;
+      }
+
+      .pulsante-indietro {
+        width: 100%;
+        padding: 13px 16px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      h1 {
+        font-size: 39px;
+      }
+
+      .frammenti-completi {
+        max-width: 198px;
+        gap: 7px;
+      }
+
+      .frammento {
+        width: 40px;
+        height: 57px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="pagina-finale">
+    <div class="cornice">
+
+      <div class="ornamento" aria-hidden="true">
+        ✦ ✧ ✦
+      </div>
+
+      <div class="simbolo-finale" aria-hidden="true">
+        ᛟ
+      </div>
+
+      <h1>
+        Grimorio<br>
+        Sbloccato
+      </h1>
+
+      <div class="sottotitolo">
+        I sette frammenti sono stati messi in ordine
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="messaggio">
+        <strong>Il tempo ha rivelato la verità.</strong>
+
+        Anima, paura, vita, logica, viaggio,
+        fortuna e legame sono tornati al loro posto.
+        <br><br>
+
+        Il Grimorio di Luca è finalmente aperto.
+      </div>
+
+      <div
+        class="frammenti-completi"
+        aria-label="Tutti i frammenti recuperati"
+      >
+        <div class="frammento"><span>1</span></div>
+        <div class="frammento"><span>2</span></div>
+        <div class="frammento"><span>3</span></div>
+        <div class="frammento"><span>4</span></div>
+        <div class="frammento"><span>5</span></div>
+        <div class="frammento"><span>6</span></div>
+        <div class="frammento"><span>7</span></div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <p class="frase-conclusiva">
+        “Il Grimorio si apre.<br>
+        La storia può finalmente continuare.”
+      </p>
+
+      index.html
+        Ricomincia
+      </a>
+
+    </div>
+  </main>
+
+</body>
+
+</html>
