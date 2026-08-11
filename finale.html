@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Il Grimorio di Luca - Finale</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+
+      color: #d8bd7a;
+      font-family: Georgia, "Times New Roman", serif;
+
+      background:
+        radial-gradient(
+          circle at 50% 25%,
+          rgba(214, 157, 65, 0.30),
+          transparent 42%
+        ),
+        radial-gradient(
+          circle at 82% 12%,
+          rgba(214, 129, 36, 0.22),
+          transparent 28%
+        ),
+        linear-gradient(
+          90deg,
+          #050403,
+          #21170f 50%,
+          #030302
+        );
+    }
+
+    .grimorio {
+      width: 760px;
+      max-width: 94vw;
+      padding: 44px 52px;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          rgba(30, 25, 18, 0.96),
+          rgba(12, 10, 8, 0.98)
+        ),
+        repeating-linear-gradient(
+          45deg,
+          rgba(255, 230, 170, 0.025) 0,
+          rgba(255, 230, 170, 0.025) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+
+      border: 2px solid rgba(176, 124, 50, 0.78);
+      border-radius: 10px;
+
+      box-shadow:
+        0 0 45px rgba(0, 0, 0, 0.92),
+        inset 0 0 45px rgba(0, 0, 0, 0.78),
+        inset 0 0 20px rgba(184, 128, 55, 0.18);
+
+      animation: comparsa 1.3s ease-out;
+    }
+
+    .cornice {
+      position: relative;
+      padding: 42px 34px 38px;
+      border: 1px solid rgba(171, 119, 48, 0.5);
+    }
+
+    .cornice::before,
+    .cornice::after {
+      content: "✦";
+      position: absolute;
+      left: 50%;
+      padding: 0 10px;
+
+      color: #a37739;
+      background: #17120d;
+
+      font-size: 18px;
+      transform: translateX(-50%);
+    }
+
+    .cornice::before {
+      top: -12px;
+    }
+
+    .cornice::after {
+      bottom: -12px;
+    }
+
+    .ornamento {
+      margin-bottom: 24px;
+
+      color: #9f763e;
+      font-size: 18px;
+      letter-spacing: 8px;
+    }
+
+    .ornamento-finale {
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+
+    .simbolo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 28px;
+
+      color: #f0cf87;
+
+      background:
+        radial-gradient(
+          circle,
+          #6f1610,
+          #320805 55%,
+          #090302 100%
+        );
+
+      border: 2px solid #c99a45;
+      border-radius: 50%;
+
+      font-size: 44px;
+
+      box-shadow:
+        inset 0 0 20px rgba(255, 207, 107, 0.18),
+        0 0 0 4px rgba(123, 82, 31, 0.38),
+        0 0 32px rgba(205, 148, 55, 0.45);
+
+      animation: luce 2.2s ease-in-out infinite alternate;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: #c99a45;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: normal;
+      line-height: 0.98;
+
+      text-shadow:
+        0 0 10px rgba(222, 170, 74, 0.38),
+        0 3px 0 rgba(0, 0, 0, 0.85);
+    }
+
+    .separatore {
+      width: 82%;
+      height: 1px;
+      margin: 30px auto;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(185, 128, 45, 0.85),
+          transparent
+        );
+    }
+
+    .messaggio {
+      max-width: 600px;
+      margin: 0 auto;
+
+      color: #dbc38e;
+      font-size: 25px;
+      font-style: italic;
+      line-height: 1.65;
+
+      text-shadow:
+        0 0 10px rgba(201, 154, 70, 0.16);
+
+      animation: comparsaTesto 1.8s ease-out both;
+    }
+
+    @keyframes comparsa {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes comparsaTesto {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes luce {
+      from {
+        transform: scale(1);
+
+        box-shadow:
+          inset 0 0 20px rgba(255, 207, 107, 0.18),
+          0 0 0 4px rgba(123, 82, 31, 0.38),
+          0 0 24px rgba(205, 148, 55, 0.34);
+      }
+
+      to {
+        transform: scale(1.04);
+
+        box-shadow:
+          inset 0 0 24px rgba(255, 207, 107, 0.24),
+          0 0 0 4px rgba(123, 82, 31, 0.48),
+          0 0 44px rgba(205, 148, 55, 0.62);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .grimorio,
+      .simbolo,
+      .messaggio {
+        animation: none;
+      }
+    }
+
+    /* Ottimizzazione per smartphone */
+
+    @media (max-width: 620px) {
+      body {
+        align-items: flex-start;
+        padding: 14px;
+      }
+
+      .grimorio {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 16px;
+      }
+
+      .cornice {
+        padding: 34px 14px 30px;
+      }
+
+      .simbolo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 24px;
+        font-size: 38px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .messaggio {
+        font-size: 21px;
+        line-height: 1.6;
+      }
+    }
+
+    /* Ottimizzazione per schermi molto piccoli */
+
+    @media (max-width: 390px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      .messaggio {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="grimorio">
+    <div class="cornice">
+
+      <div class="ornamento" aria-hidden="true">
+        ✦ ✧ ✦
+      </div>
+
+      <div class="simbolo" aria-hidden="true">
+        ᛟ
+      </div>
+
+      <h1>
+        Grimorio<br>
+        Sbloccato
+      </h1>
+
+      <div class="separatore"></div>
+
+      <p class="messaggio">
+        “Lascia scorrere il tempo: con le persone giuste al tuo fianco,
+        anche gli anni più difficili fanno meno paura.”
+      </p>
+
+      <div class="separatore"></div>
+
+      <div
+        class="ornamento ornamento-finale"
+        aria-hidden="true"
+      >
+        ✦ ✧ ✦
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    /*
+      Verifica che il Grimorio sia stato completato
+      nella pagina index.html.
+
+      Se il valore non è presente, l'utente viene
+      riportato automaticamente alla pagina iniziale.
+    */
+
+    if (
+      sessionStorage.getItem("grimorioSbloccato") !== "true"
+    ) {
+      window.location.replace("index.html");
+    }
+  </script>
+
+</body>
+
+</html>
