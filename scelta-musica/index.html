@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07101f">
+  <title>Dove mi porta la musica oggi?</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34,168,255,.18), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(102,72,255,.18), transparent 32%),
+        linear-gradient(145deg, #07101f, #0d1a2f);
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 20px;
+    }
+    .container { width: 100%; max-width: 1050px; text-align: center; }
+    .hidden { display: none !important; }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 4.7rem);
+      line-height: 1.06;
+      letter-spacing: -.04em;
+    }
+    .subtitle {
+      max-width: 720px;
+      margin: 24px auto 44px;
+      color: #b7c3d6;
+      font-size: clamp(1rem, 2.3vw, 1.25rem);
+      line-height: 1.6;
+    }
+    .symbols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .symbol-button {
+      min-height: 245px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 30px;
+      background: rgba(15,28,49,.88);
+      box-shadow: 0 22px 50px rgba(0,0,0,.38);
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .symbol-button:hover {
+      transform: translateY(-7px);
+      border-color: rgba(66,199,255,.55);
+    }
+    .symbol-button:active { transform: scale(.97); }
+    .symbol-button:focus-visible {
+      outline: 4px solid rgba(66,199,255,.35);
+      outline-offset: 5px;
+    }
+    .symbol-image {
+      display: block;
+      width: 145px;
+      height: 145px;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 18px rgba(0,0,0,.32));
+    }
+    .result-card {
+      max-width: 760px;
+      margin: auto;
+      padding: 42px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 34px;
+      background: rgba(15,28,49,.9);
+      box-shadow: 0 28px 70px rgba(0,0,0,.44);
+    }
+    .check {
+      width: 86px;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      border-radius: 28px;
+      color: #07101f;
+      background: linear-gradient(145deg, #6de5a5, #39cfff);
+      font-size: 2.8rem;
+      font-weight: 900;
+    }
+    .destination-box {
+      margin-top: 34px;
+      padding: 30px 24px;
+      border: 1px solid rgba(66,199,255,.24);
+      border-radius: 25px;
+      background: rgba(3,11,24,.64);
+    }
+    .label {
+      margin: 0 0 15px;
+      color: #7d8da5;
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+    .intro-result { color: #b7c3d6; line-height: 1.6; }
+    .visible-link {
+      display: block;
+      margin: 22px 0;
+      padding: 18px;
+      color: #64d5ff;
+      background: rgba(66,199,255,.07);
+      border: 1px solid rgba(66,199,255,.2);
+      border-radius: 15px;
+      font-size: clamp(1rem, 3vw, 1.24rem);
+      font-weight: 700;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+    .visible-link:hover { color: #a3e8ff; text-decoration: underline; }
+    .buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+    .action-button {
+      min-width: 190px;
+      padding: 15px 22px;
+      border: 0;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #04101d;
+      background: linear-gradient(135deg, #42c7ff, #7d9cff);
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .action-button.secondary {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07);
+    }
+    #copyMessage { min-height: 22px; color: #6de5a5; font-weight: 700; }
+    .lock { margin-top: 26px; color: #7d8da5; font-size: .88rem; }
+    @media (max-width: 760px) {
+      .page { align-items: flex-start; padding-top: 48px; }
+      .symbols { grid-template-columns: 1fr; gap: 18px; }
+      .symbol-button { min-height: 170px; }
+      .symbol-image { width: 115px; height: 115px; }
+      .result-card { padding: 32px 20px; }
+      .action-button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section id="choiceScreen" class="container">
+      <h1>Dove mi porta la musica oggi?</h1>
+      <p class="subtitle">Se la scelta sarà corretta verrà fornita la giusta destinazione per proseguire.</p>
+
+      <div class="symbols">
+        <button class="symbol-button" type="button" data-choice="twitter" aria-label="Scegli il primo simbolo">
+          <img class="symbol-image" src="./twitter.png" alt="Simbolo Twitter">
+        </button>
+
+        <button class="symbol-button" type="button" data-choice="msn" aria-label="Scegli il secondo simbolo">
+          <img class="symbol-image" src="./msn.png" alt="Simbolo MSN">
+        </button>
+
+        <button class="symbol-button" type="button" data-choice="snapchat" aria-label="Scegli il terzo simbolo">
+          <img class="symbol-image" src="./snapchat.png" alt="Simbolo Snapchat">
+        </button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="container hidden" aria-live="polite">
+      <div class="result-card">
+        <div class="check" aria-hidden="true">✓</div>
+        <h1>Ottima scelta!</h1>
+
+        <div class="destination-box">
+          <p class="label">La vostra destinazione</p>
+          <p class="intro-result">Aprite il seguente indirizzo per scoprire dove dovete andare:</p>
+
+          <a id="destinationLink" class="visible-link" href="#" target="_blank" rel="noopener noreferrer">Caricamento della destinazione...</a>
+
+          <div class="buttons">
+            <a id="openMapButton" class="action-button" href="#" target="_blank" rel="noopener noreferrer">Apri la destinazione</a>
+            <button id="copyButton" class="action-button secondary" type="button">Copia il link</button>
+          </div>
+
+          <p id="copyMessage" aria-live="polite"></p>
+        </div>
+
+        <p class="lock">La scelta è stata registrata su questo dispositivo e non può essere modificata.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const destinations = {
+      twitter: "https://maps.app.goo.gl/Zg5rPyMxsYbvGuEB6",
+      msn: "https://maps.app.goo.gl/xQnE32jFNx9TXAqi7",
+      snapchat: "https://maps.app.goo.gl/fDqZndp68yev4kBS6"
+    };
+
+    const storageKey = "musica-oggi-scelta-definitiva";
+    const choiceScreen = document.getElementById("choiceScreen");
+    const resultScreen = document.getElementById("resultScreen");
+    const destinationLink = document.getElementById("destinationLink");
+    const openMapButton = document.getElementById("openMapButton");
+    const copyButton = document.getElementById("copyButton");
+    const copyMessage = document.getElementById("copyMessage");
+    const symbolButtons = document.querySelectorAll(".symbol-button");
+
+    function showDestination(choice) {
+      const destination = destinations[choice];
+      if (!destination) return;
+
+      destinationLink.href = destination;
+      destinationLink.textContent = destination;
+      openMapButton.href = destination;
+      copyButton.dataset.link = destination;
+
+      choiceScreen.classList.add("hidden");
+      resultScreen.classList.remove("hidden");
+      window.history.replaceState({ choiceLocked: true }, "", window.location.href);
+    }
+
+    symbolButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const savedChoice = localStorage.getItem(storageKey);
+        if (savedChoice && destinations[savedChoice]) {
+          showDestination(savedChoice);
+          return;
+        }
+
+        const selectedChoice = button.dataset.choice;
+        if (!destinations[selectedChoice]) return;
+
+        symbolButtons.forEach(function (item) { item.disabled = true; });
+        localStorage.setItem(storageKey, selectedChoice);
+        showDestination(selectedChoice);
+      });
+    });
+
+    copyButton.addEventListener("click", async function () {
+      const link = copyButton.dataset.link;
+      if (!link) return;
+
+      try {
+        await navigator.clipboard.writeText(link);
+      } catch (error) {
+        const field = document.createElement("textarea");
+        field.value = link;
+        field.style.position = "fixed";
+        field.style.left = "-9999px";
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand("copy");
+        field.remove();
+      }
+
+      copyMessage.textContent = "Link copiato negli appunti.";
+      setTimeout(function () { copyMessage.textContent = ""; }, 3000);
+    });
+
+    const savedChoice = localStorage.getItem(storageKey);
+    if (savedChoice && destinations[savedChoice]) {
+      showDestination(savedChoice);
+    }
+
+    window.addEventListener("pageshow", function () {
+      const choice = localStorage.getItem(storageKey);
+      if (choice && destinations[choice]) showDestination(choice);
+    });
+  </script>
+</body>
+</html>
