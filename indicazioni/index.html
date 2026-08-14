@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina di diario</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #202020;
+      color: #171717;
+      font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    }
+
+    /* Foglio di diario chiaro con righe grigie */
+    .pagina-diario {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      min-height: 650px;
+      padding: 45px 55px 55px 75px;
+      overflow: hidden;
+      border: 1px solid #9c9c9c;
+      border-radius: 4px;
+      background-color: #f7f7f4;
+      background-image:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 35px,
+          rgba(70, 70, 70, 0.24) 36px,
+          transparent 37px
+        ),
+        linear-gradient(
+          to right,
+          transparent 0,
+          transparent 48px,
+          rgba(50, 50, 50, 0.34) 49px,
+          transparent 50px
+        );
+      box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        inset 0 0 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .pagina-diario::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at center,
+        transparent 55%,
+        rgba(0, 0, 0, 0.08) 100%
+      );
+    }
+
+    .contenuto {
+      position: relative;
+      z-index: 1;
+    }
+
+    .data {
+      margin: 0 0 34px 0;
+      font-size: 23px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .testo-diario {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.95;
+      text-align: left;
+    }
+
+    .sequenza {
+      margin: 38px 0;
+      font-size: 35px;
+      font-weight: 700;
+      letter-spacing: 7px;
+      text-align: center;
+    }
+
+    .indicazione {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 19px;
+      line-height: 1.9;
+      text-align: center;
+    }
+
+    .scelte {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 42px;
+    }
+
+    .pulsante-scelta {
+      width: 108px;
+      min-height: 68px;
+      border: 2px solid #222;
+      border-radius: 8px;
+      background: #ededed;
+      color: #111;
+      font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+      font-size: 29px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow:
+        0 5px 0 #333,
+        0 9px 14px rgba(0, 0, 0, 0.24);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .pulsante-scelta:hover {
+      transform: translateY(-3px);
+      background: #fff;
+      box-shadow:
+        0 8px 0 #333,
+        0 12px 18px rgba(0, 0, 0, 0.28);
+    }
+
+    .pulsante-scelta:active {
+      transform: translateY(4px);
+      box-shadow:
+        0 1px 0 #333,
+        0 5px 8px rgba(0, 0, 0, 0.20);
+    }
+
+    /* Schermata mostrata dopo la scelta */
+    .schermata-risultato {
+      display: none;
+      width: 100%;
+      min-height: calc(100vh - 40px);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .contenitore-immagine {
+      width: 100%;
+      max-width: 1000px;
+      padding: 14px;
+      background: #f2f2f2;
+      border: 1px solid #777;
+      border-radius: 8px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.58);
+    }
+
+    .immagine-risultato {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 75px);
+      margin: 0 auto;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+
+    .errore-immagine {
+      display: none;
+      padding: 34px;
+      color: #111;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    @media screen and (max-width: 650px) {
+      body {
+        padding: 0;
+        align-items: flex-start;
+        background: #f7f7f4;
+      }
+
+      .pagina-diario {
+        min-height: 100vh;
+        padding: 30px 22px 45px 42px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-image:
+          repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            rgba(70, 70, 70, 0.24) 32px,
+            transparent 33px
+          ),
+          linear-gradient(
+            to right,
+            transparent 0,
+            transparent 27px,
+            rgba(50, 50, 50, 0.34) 28px,
+            transparent 29px
+          );
+      }
+
+      .data {
+        margin-bottom: 27px;
+        font-size: 20px;
+      }
+
+      .testo-diario,
+      .indicazione {
+        font-size: 16px;
+        line-height: 1.95;
+      }
+
+      .sequenza {
+        margin: 33px 0;
+        font-size: 28px;
+        letter-spacing: 4px;
+      }
+
+      .scelte {
+        gap: 13px;
+        margin-top: 36px;
+      }
+
+      .pulsante-scelta {
+        width: 82px;
+        min-height: 60px;
+        font-size: 25px;
+      }
+
+      .schermata-risultato {
+        min-height: 100vh;
+        padding: 8px;
+        background: #202020;
+      }
+
+      .contenitore-immagine {
+        padding: 7px;
+      }
+
+      .immagine-risultato {
+        max-height: calc(100vh - 16px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main id="paginaDiario" class="pagina-diario">
+    <div class="contenuto">
+      <div class="data">28/04</div>
+
+      <p class="testo-diario">
+        Ho capito che la faccenda del Grimorio è seria.
+        Devo proteggere bene i nomi dei frammenti che scelgo.
+        Ad esempio, potrei usare un enigma che conosco molto bene per un nascondiglio:
+      </p>
+
+      <div class="sequenza">4, 7, 5, 6, ?</div>
+
+      <p class="indicazione">
+        Scegliendo bene il numero che continua la sequenza riceverai nuove indicazioni per il luogo giusto
+      </p>
+
+      <div class="scelte">
+        <button type="button" class="pulsante-scelta" onclick="effettuaScelta('1')" aria-label="Scegli il numero 1">1</button>
+        <button type="button" class="pulsante-scelta" onclick="effettuaScelta('3')" aria-label="Scegli il numero 3">3</button>
+        <button type="button" class="pulsante-scelta" onclick="effettuaScelta('5')" aria-label="Scegli il numero 5">5</button>
+      </div>
+    </div>
+  </main>
+
+  <main id="schermataRisultato" class="schermata-risultato">
+    <div class="contenitore-immagine">
+      <img
+        id="immagineRisultato"
+        class="immagine-risultato"
+        src=""
+        alt=""
+        onerror="gestisciErroreImmagine()"
+      >
+
+      <div id="erroreImmagine" class="errore-immagine">
+        L'immagine non è stata trovata.<br>
+        Controlla che il nome del file sia corretto e che l'immagine si trovi nella stessa cartella di questo file HTML.
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const immagini = {
+      "1": "marconi.png",
+      "3": "monte.png",
+      "5": "alfieri.png"
+    };
+
+    const nomeMemoria = "sceltaDiarioGrimorio2804";
+
+    function effettuaScelta(numero) {
+      if (!immagini[numero]) return;
+
+      localStorage.setItem(nomeMemoria, numero);
+
+      window.history.replaceState(
+        { sceltaBloccata: true, numeroScelto: numero },
+        "",
+        window.location.href
+      );
+
+      mostraRisultato(numero);
+    }
+
+    function mostraRisultato(numero) {
+      if (!immagini[numero]) return;
+
+      const paginaDiario = document.getElementById("paginaDiario");
+      const schermataRisultato = document.getElementById("schermataRisultato");
+      const immagineRisultato = document.getElementById("immagineRisultato");
+      const erroreImmagine = document.getElementById("erroreImmagine");
+
+      erroreImmagine.style.display = "none";
+      immagineRisultato.style.display = "block";
+      immagineRisultato.src = immagini[numero];
+      immagineRisultato.alt = "Indicazione ottenuta scegliendo il numero " + numero;
+
+      paginaDiario.style.display = "none";
+      schermataRisultato.style.display = "flex";
+    }
+
+    function gestisciErroreImmagine() {
+      document.getElementById("immagineRisultato").style.display = "none";
+      document.getElementById("erroreImmagine").style.display = "block";
+    }
+
+    function controllaSceltaSalvata() {
+      const sceltaSalvata = localStorage.getItem(nomeMemoria);
+      if (sceltaSalvata && immagini[sceltaSalvata]) {
+        mostraRisultato(sceltaSalvata);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", controllaSceltaSalvata);
+    window.addEventListener("pageshow", controllaSceltaSalvata);
+    window.addEventListener("popstate", controllaSceltaSalvata);
+  </script>
+</body>
+</html>
