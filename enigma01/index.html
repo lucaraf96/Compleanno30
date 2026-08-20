@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Documento protetto</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at top,
+                    #26334a 0%,
+                    #111827 52%,
+                    #080c14 100%
+                );
+            color: #ffffff;
+        }
+
+        /* SCHERMATA PASSWORD */
+
+        #password-screen {
+    *       display: flex;
+            *lign-items: center;
+            ju*tify-content: center;
+            *in-height: 100%;
+            paddi*g: 24px;
+        }
+
+        .passw*rd-box {
+            width: 100%;
+*           max-width: 520px;
+     *      padding: 42px 34px;
+        *   text-align: center;
+           *background: rgba(15, 23, 42, 0.94)*
+            border: 1px solid rgb*(255, 255, 255, 0.14);
+           *border-radius: 20px;
+            b*x-shadow: 0 24px 70px rgba(0, 0, 0* 0.5);
+        }
+
+        .symbol *
+            margin-bottom: 18px;
+*           font-size: 52px;
+      * }
+
+        h1 {
+            margi*: 0 0 14px;
+            font-size:*30px;
+            font-weight: 600*
+        }
+
+        .description {*            margin: 0 0 28px;
+    *       color: #cbd5e1;
+           *font-size: 16px;
+            line-*eight: 1.6;
+        }
+
+        .pa*sword-input {
+            width: 1*0%;
+            padding: 15px 17px*
+            color: #ffffff;
+     *      background: #0b1220;
+       *    border: 1px solid #475569;
+   *        border-radius: 10px;
+     *      outline: none;
+            f*nt-size: 17px;
+            text-al*gn: center;
+            transition*
+                border-color 0.2s*ease,
+                box-shadow 0*2s ease;
+        }
+
+        .passw*rd-input:focus {
+            borde*-color: #94a3b8;
+            box-s*adow: 0 0 0 4px rgba(148, 163, 184* 0.12);
+        }
+
+        .unlock*button {
+            width: 100%;
+*           margin-top: 16px;
+     *      padding: 15px 20px;
+        *   color: #111827;
+            bac*ground: #e2e8f0;
+            borde*: none;
+            border-radius:*10px;
+            font-size: 17px;*            font-weight: 700;
+    *       cursor: pointer;
+          * transition:
+                backg*ound 0.2s ease,
+                tr*nsform 0.2s ease;
+        }
+
+        .unlock-button:hover {
+            background: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .unlock-button:active {
+            transform: translateY(0);
+        }
+
+        #error-message {
+            min-height: 24px;
+            margin: 16px 0 0;
+            color: #fca5a5;
+            font-size: 15px;
+        }
+
+        /* SCHERMATA PDF */
+
+        #pdf-screen {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: #111827;
+        }
+
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 0 18px;
+            background: #0f172a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .pdf-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .open-pdf-button {
+            display: inline-block;
+            padding: 9px 14px;
+            color: #111827;
+            background: #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .open-pdf-button:hover {
+            background: #ffffff;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: calc(100% - 60px);
+        }
+
+        .pdf-frame {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .password-box {
+                padding: 34px 22px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .pdf-header {
+                height: 68px;
+                padding: 0 12px;
+            }
+
+            .pdf-title {
+                font-size: 15px;
+            }
+
+            .pdf-container {
+                height: calc(100% - 68px);
+            }
+
+            .open-pdf-button {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SCHERMATA DI ACCESSO -->
+
+    <main id="password-screen">
+        <section class="password-box">
+
+            <div class="symbol">🔐</div>
+
+            <h1>Documento protetto</h1>
+
+            <p class="description">
+                Scrivi la soluzione per sbloccare il documento.
+            </p>
+
+            <input
+                id="password-input"
+                class="password-input"
+                type="text"
+                placeholder="Scrivi la soluzione..."
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                aria-label="Password di accesso"
+            >
+
+            <button
+                id="unlock-button"
+                class="unlock-button"
+                type="button"
+            >
+                Sblocca il documento
+            </button>
+
+            <p id="error-message" aria-live="polite"></p>
+
+        </section>
+    </main>
+
+    <!-- VISUALIZZATORE PDF -->
+
+    <section id="pdf-screen">
+
+        <header class="pdf-header">
+
+            <p class="pdf-title">
+                Documento sbloccato
+            </p>
+
+            enigma01.pdf
+                Apri PDF
+            </a>
+
+        </header>
+
+        <div class="pdf-container">
+
+            <iframe
+                id="pdf-frame"
+                class="pdf-frame"
+                title="Documento PDF"
+            ></iframe>
+
+        </div>
+
+    </section>
+
+    <script>
+        const passwordInput =
+            document.getElementById("password-input");
+
+        const unlockButton =
+            document.getElementById("unlock-button");
+
+        const errorMessage =
+            document.getElementById("error-message");
+
+        const passwordScreen =
+            document.getElementById("password-screen");
+
+        const pdfScreen =
+            document.getElementById("pdf-screen");
+
+        const pdfFrame =
+            document.getElementById("pdf-frame");
+
+        /*
+         * Questa funzione rende equivalenti:
+         *
+         * vorrei risolvere l'enigma
+         * vorreirisolverel'enigma
+         * vorreirisolverelenigma
+         * Vorrei risolvere l'enigma
+         * Vorreirisolverel'enigma
+         * Vorreirisolverelenigma
+         *
+         * Vengono ignorati:
+         * - maiuscole e minuscole
+         * - spazi
+         * - apostrofi normali e tipografici
+         */
+
+        function normalizePhrase(phrase) {
+            return phrase
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, "")
+                .replace(/['’`´]/g, "");
+        }
+
+        function unlockDocument() {
+            const insertedPhrase =
+                normalizePhrase(passwordInput.value);
+
+            const correctPhrase =
+                "vorreirisolverelenigma";
+
+            if (insertedPhrase === correctPhrase) {
+
+                errorMessage.textContent = "";
+
+                passwordScreen.style.display = "none";
+                pdfScreen.style.display = "block";
+
+                /*
+                 * Il PDF viene caricato solo dopo
+                 * l'inserimento della frase corretta.
+                 */
+
+                pdfFrame.src = "enigma01.pdf";
+
+            } else {
+
+                errorMessage.textContent =
+                    "La soluzione proposta non è corretta. Riprova.";
+
+                passwordInput.value = "";
+                passwordInput.focus();
+
+                const box =
+                    document.querySelector(".password-box");
+
+                box.animate(
+                    [
+                        { transform: "translateX(0)" },
+                        { transform: "translateX(-8px)" },
+                        { transform: "translateX(8px)" },
+                        { transform: "translateX(-5px)" },
+                        { transform: "translateX(5px)" },
+                        { transform: "translateX(0)" }
+                    ],
+                    {
+                        duration: 350,
+                        easing: "ease-in-out"
+                    }
+                );
+            }
+        }
+
+        unlockButton.addEventListener(
+            "click",
+            unlockDocument
+        );
+
+        passwordInput.addEventListener(
+            "keydown",
+            function(event) {
+                if (event.key === "Enter") {
+                    unlockDocument();
+                }
+            }
+        );
+
+        window.addEventListener(
+            "load",
+            function() {
+                passwordInput.focus();
+            }
+        );
+    </script>
+
+</body>
+</html>
